@@ -1500,6 +1500,10 @@ nav.scrolled {
     display: block;
   }
   
+  .mobile-auth-link {
+    display: block !important;
+  }
+  
   .hero h1 {
     font-size: 2.5rem;
   }

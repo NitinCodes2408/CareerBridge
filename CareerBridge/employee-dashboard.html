@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Employee Dashboard | CareerBridge</title>
+  
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <link href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" rel="stylesheet">
+  
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="dashboard.css">
+</head>
+<body>
+
+  <div class="dashboard-layout">
+    <!-- Sidebar Overlay for Mobile -->
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+    
+    <!-- Sidebar -->
+    <aside class="sidebar" id="sidebar">
+      <div class="sidebar-header">
+        <a href="index.html" class="logo">
+          <i class='bx bxs-graduation'></i>
+          Career<span>Bridge</span>
+        </a>
+      </div>
+      
+      <div class="sidebar-menu">
+        <ul>
+          <li><a href="#" class="active"><i class='bx bxs-dashboard'></i> Dashboard</a></li>
+          <li><a href="#"><i class='bx bxs-group'></i> Candidates</a></li>
+          <li><a href="#"><i class='bx bxs-briefcase-alt-2'></i> Job Postings</a></li>
+          <li><a href="#"><i class='bx bx-cog'></i> Settings</a></li>
+        </ul>
+      </div>
+      
+      <div class="sidebar-footer">
+        <a href="index.html" class="btn btn-outline w-100" style="padding: 0.5rem; font-size: 0.9rem;">
+          <i class='bx bx-log-out'></i> Logout
+        </a>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="dashboard-header">
+        <div class="menu-toggle" id="sidebarToggle" style="display: block;">
+          <i class='bx bx-menu'></i>
+        </div>
+        
+        <div class="user-profile">
+          <span style="font-weight: 500;">HR Manager</span>
+          <img src="https://ui-avatars.com/api/?name=HR+Manager&background=6366F1&color=fff" alt="User Profile">
+        </div>
+      </header>
+      
+      <div class="dashboard-body">
+        <div class="dashboard-title fade-in-up">
+          <h2>Employee Dashboard</h2>
+          <p>Welcome to the employer portal. (Under Construction)</p>
+        </div>
+        
+        <div class="dash-card zoom-in">
+            <div class="card-icon"><i class='bx bxs-hard-hat'></i></div>
+            <h3>Coming Soon</h3>
+            <p>The full employer portal is currently being developed. Check back later for talent matching and job posting features.</p>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script src="dashboard.js"></script>
+</body>
+</html>

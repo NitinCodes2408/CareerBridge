@@ -27,7 +27,7 @@ document.addEventListener('DOMContentLoaded', () => {
             
             setTimeout(() => {
                 if (role === 'student') {
-                    window.location.href = 'dashboard.html';
+                    window.location.href = 'dashboard-home.html';
                 } else {
                     window.location.href = 'employee-dashboard.html';
                 }

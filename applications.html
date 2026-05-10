@@ -29,14 +29,14 @@
       
       <div class="sidebar-menu">
         <ul>
-          <li><a href="dashboard.html"  ><i class='bx bxs-dashboard'></i> Dashboard Home</a></li>
-          <li><a href="profile.html"><i class='bx bxs-user-detail'></i> My Profile</a></li>
-          <li><a href="learning.html"><i class='bx bxs-book-open'></i> Learning Platform</a></li>
+          <li><a href="dashboard-home.html" ><i class='bx bxs-dashboard'></i> Dashboard Home</a></li>
+          <li><a href="learning.html" ><i class='bx bxs-book-open'></i> Learning Platform</a></li>
           <li><a href="applications.html" class="active"><i class='bx bxs-file-find'></i> My Applications</a></li>
-          <li><a href="jobs.html"><i class='bx bxs-briefcase'></i> Companies & Jobs</a></li>
-          <li><a href="resume.html"><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
-          <li><a href="aptitude.html"><i class='bx bx-brain'></i> Aptitude Test</a></li>
-          <li><a href="support.html"><i class='bx bx-support'></i> Support & Queries</a></li>
+          <li><a href="jobs.html" ><i class='bx bxs-briefcase'></i> Companies & Jobs</a></li>
+          <li><a href="resume-builder.html" ><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
+          <li><a href="aptitude.html" ><i class='bx bx-brain'></i> Aptitude Test</a></li>
+          <li><a href="profile.html" ><i class='bx bxs-user-detail'></i> Profile</a></li>
+          <li><a href="support.html" ><i class='bx bx-support'></i> Support & Queries</a></li>
         </ul>
       </div>
       
@@ -48,7 +48,7 @@
     </aside>
 
     <!-- Main Content -->
-    <main class="main-content">
+    <main class="main-content page-transition">
       <header class="dashboard-header">
         <div class="menu-toggle" id="sidebarToggle" style="display: block;">
           <i class='bx bx-menu'></i>
@@ -64,9 +64,15 @@
             <i class='bx bxs-bell'></i>
             <span class="badge-dot"></span>
           </div>
-          <div class="user-profile">
+          <div class="user-profile dropdown-container">
             <span style="font-weight: 500;" id="userNameDisplay">Student User</span>
             <img id="userAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff" alt="User Profile">
+            <div class="dropdown-menu-custom">
+                <a href="profile.html"><i class='bx bx-user'></i> My Profile</a>
+                <a href="support.html"><i class='bx bx-help-circle'></i> Help & Support</a>
+                <div class="dropdown-divider"></div>
+                <a href="index.html" class="text-danger"><i class='bx bx-log-out'></i> Logout</a>
+            </div>
           </div>
         </div>
       </header>
@@ -145,10 +151,7 @@
           </div>
         </div>
 
-        <!-- Section: Resume Builder -->
-
-
-      </div>
+        </div>
     </main>
   </div>
 

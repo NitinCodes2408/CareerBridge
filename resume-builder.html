@@ -33,10 +33,10 @@
           <li><a href="learning.html" ><i class='bx bxs-book-open'></i> Learning Platform</a></li>
           <li><a href="applications.html" ><i class='bx bxs-file-find'></i> My Applications</a></li>
           <li><a href="jobs.html" ><i class='bx bxs-briefcase'></i> Companies & Jobs</a></li>
-          <li><a href="resume-builder.html" ><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
+          <li><a href="resume-builder.html" class="active"><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
           <li><a href="aptitude.html" ><i class='bx bx-brain'></i> Aptitude Test</a></li>
           <li><a href="profile.html" ><i class='bx bxs-user-detail'></i> Profile</a></li>
-          <li><a href="support.html" class="active"><i class='bx bx-support'></i> Support & Queries</a></li>
+          <li><a href="support.html" ><i class='bx bx-support'></i> Support & Queries</a></li>
         </ul>
       </div>
       
@@ -78,37 +78,85 @@
       </header>
       
       <div class="dashboard-body">
-<div class="dash-card zoom-in query-card" id="support" style="transition-delay: 100ms;">
-            <div class="card-header">
-              <h3><i class='bx bx-support text-primary'></i> Mentor Support Ticket</h3>
+<div class="section-divider" id="resume">
+          <h3 class="section-title">Resume Builder</h3>
+          <p class="section-subtitle">Craft an ATS-friendly resume</p>
+        </div>
+        <div class="dashboard-grid split-grid-large">
+          <div class="dash-card zoom-in resume-form-card">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3>Fill Details</h3>
+              <div class="ats-score-badge">ATS Score: <strong>82/100</strong></div>
             </div>
-            <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">Submit your query to our placement mentors.</p>
             
-            <form id="queryForm" class="lead-form grid-form" style="background: transparent; padding: 0; box-shadow: none;">
-              <div class="form-group full-width" style="margin-bottom: 1rem;">
-                <input type="text" id="querySubject" placeholder="Subject (e.g. Resume Review Request)" required style="padding: 0.8rem; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 100%; color: #fff;">
+            <form id="resumeForm" class="lead-form grid-form" style="background: transparent; padding: 0; box-shadow: none;">
+              <!-- Personal -->
+              <h4 class="form-section-title">Personal Info</h4>
+              <div class="form-group full-width">
+                <label for="resName">Full Name</label>
+                <input type="text" id="resName" placeholder="e.g. John Doe" required>
               </div>
-              <div class="form-group full-width" style="margin-bottom: 1rem;">
-                <textarea id="queryDesc" placeholder="Describe your doubt in detail..." rows="4" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); background-color: var(--bg-main); border-radius: var(--radius-md); font-family: inherit; font-size: 0.95rem; color: #fff;"></textarea>
+              <div class="form-group full-width">
+                <label for="resRole">Target Role</label>
+                <input type="text" id="resRole" placeholder="e.g. Full Stack Developer" required>
               </div>
-              <button type="submit" class="btn btn-outline full-width">Submit Ticket</button>
+              
+              <!-- Education -->
+              <h4 class="form-section-title">Education</h4>
+              <div class="form-group full-width">
+                <label for="resEducation">Highest Degree</label>
+                <input type="text" id="resEducation" placeholder="e.g. B.Tech Computer Science" required>
+              </div>
+              
+              <!-- Skills -->
+              <h4 class="form-section-title">Skills</h4>
+              <div class="form-group full-width">
+                <label for="resSkills">Key Skills (comma separated)</label>
+                <input type="text" id="resSkills" placeholder="e.g. Java, Spring Boot, React, SQL" required>
+              </div>
+              
+              <!-- Experience -->
+              <h4 class="form-section-title">Experience / Projects</h4>
+              <div class="form-group full-width">
+                <label for="resExp">Latest Experience</label>
+                <textarea id="resExp" rows="3" placeholder="Developed a React-based dashboard..."></textarea>
+              </div>
+
+              <button type="submit" class="btn btn-primary full-width" style="margin-top: 1rem;"><i class='bx bx-refresh'></i> Update Preview</button>
             </form>
-            
-            <div id="recentQueriesList" style="margin-top: 2rem;">
-              <h4 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-dark); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Previous Tickets</h4>
-              <div class="query-item fade-in-up">
-                  <div class="q-left">
-                    <span style="color: var(--text-dark); font-weight: 500; display: block;">Mock Interview Feedback</span>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">2 days ago</span>
-                  </div>
-                  <span class="query-status resolved" style="background: rgba(16,185,129,0.1); color: #10B981;">Resolved</span>
+          </div>
+
+          <div class="dash-card zoom-in resume-preview-card" style="transition-delay: 100ms;">
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+              <h3>Live Preview</h3>
+              <button id="downloadPdfBtn" class="btn btn-outline btn-sm">
+                <i class='bx bxs-download'></i> Export PDF
+              </button>
+            </div>
+            <div id="resumePreview" class="resume-preview-doc">
+              <div class="doc-header">
+                <h2 id="prevName">John Doe</h2>
+                <p id="prevRole">Full Stack Developer</p>
+              </div>
+              <div class="doc-section">
+                <h4>Education</h4>
+                <p id="prevEdu">B.Tech Computer Science</p>
+              </div>
+              <div class="doc-section">
+                <h4>Skills</h4>
+                <div class="skill-tags" id="prevSkillsContainer">
+                  <span>Java</span><span>React</span><span>SQL</span>
+                </div>
+              </div>
+              <div class="doc-section">
+                <h4>Experience</h4>
+                <p id="prevExpText">Developed a React-based dashboard...</p>
               </div>
             </div>
           </div>
+        </div>
 
         </div>
-      
-      </div>
     </main>
   </div>
 

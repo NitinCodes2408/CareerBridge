@@ -50,7 +50,7 @@
     <!-- Main Content -->
     <main class="main-content page-transition">
       <header class="dashboard-header">
-        <div class="menu-toggle" id="sidebarToggle" style="display: block;">
+        <div class="menu-toggle" id="sidebarToggle">
           <i class='bx bx-menu'></i>
         </div>
         
@@ -61,17 +61,53 @@
         
         <div class="header-actions">
           <div class="notification-icon">
-            <i class='bx bxs-bell'></i>
+            <i class='bx bxs-bell' style="font-size: 1.4rem;"></i>
             <span class="badge-dot"></span>
+
+            <div class="notification-dropdown glass-card">
+              <div class="notif-header">
+                <span>Notifications</span>
+                <span class="badge bg-primary-light text-primary" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">3 New</span>
+              </div>
+              <div class="notif-list">
+                <a href="jobs.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(16,185,129,0.1); color: #10B981;"><i class='bx bxs-briefcase'></i></div>
+                  <div class="notif-content">
+                    <h4>New Jobs Added!</h4>
+                    <p>Meta and Apple have posted new intern roles matching your profile.</p>
+                    <span class="notif-time">2 hours ago</span>
+                  </div>
+                </a>
+                <a href="resume-builder.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(245,158,11,0.1); color: #F59E0B;"><i class='bx bxs-error-circle'></i></div>
+                  <div class="notif-content">
+                    <h4>Resume Incomplete</h4>
+                    <p>Your resume is missing the latest project details. Update it to improve your ATS score.</p>
+                    <span class="notif-time">5 hours ago</span>
+                  </div>
+                </a>
+                <a href="aptitude.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-brain'></i></div>
+                  <div class="notif-content">
+                    <h4>Upcoming Test Reminder</h4>
+                    <p>You have a scheduled mock aptitude test tomorrow at 10 AM.</p>
+                    <span class="notif-time">1 day ago</span>
+                  </div>
+                </a>
+              </div>
+              <div style="padding: 0.8rem; text-align: center; border-top: 1px solid var(--border-color);">
+                <a href="#" style="color: var(--primary); font-size: 0.85rem; font-weight: 500; text-decoration: none;">View All Notifications</a>
+              </div>
+            </div>
           </div>
           <div class="user-profile dropdown-container">
             <span style="font-weight: 500;" id="userNameDisplay">Student User</span>
             <img id="userAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff" alt="User Profile">
-            <div class="dropdown-menu-custom">
-                <a href="profile.html"><i class='bx bx-user'></i> My Profile</a>
-                <a href="support.html"><i class='bx bx-help-circle'></i> Help & Support</a>
-                <div class="dropdown-divider"></div>
-                <a href="index.html" class="text-danger"><i class='bx bx-log-out'></i> Logout</a>
+            <div class="dropdown-menu-custom glass-card">
+              <a href="profile.html"><i class='bx bx-user'></i> My Profile</a>
+              <a href="support.html"><i class='bx bx-help-circle'></i> Help & Support</a>
+              <div class="dropdown-divider"></div>
+              <a href="index.html" class="text-danger"><i class='bx bx-log-out'></i> Logout</a>
             </div>
           </div>
         </div>

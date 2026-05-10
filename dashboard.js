@@ -20,8 +20,9 @@ document.addEventListener('DOMContentLoaded', () => {
             
             if (!displayName) {
                 let namePart = email.split('@')[0];
-                namePart = namePart.replace(/[._]/g, ' ');
-                displayName = namePart.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
+                namePart = namePart.replace(/[0-9]/g, ''); // Remove numbers
+                namePart = namePart.replace(/[._]/g, ' ').trim();
+                displayName = namePart.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ') || 'User';
             }
             localStorage.setItem('careerBridgeUser', displayName);
             
@@ -70,8 +71,12 @@ document.addEventListener('DOMContentLoaded', () => {
     const welcomeName = document.getElementById('welcomeName');
     const profilePageAvatar = document.getElementById('profilePageAvatar');
     const profName = document.getElementById('profName');
+    const welcomeAvatar = document.getElementById('welcomeAvatar');
 
-    const storedName = localStorage.getItem('careerBridgeUser') || 'Student User';
+    let storedName = localStorage.getItem('careerBridgeUser') || 'Student User';
+    
+    // Clean up name by removing numbers (fixes existing sessions)
+    storedName = storedName.replace(/[0-9]/g, '').trim() || 'Student User';
     
     if (userNameDisplay) userNameDisplay.textContent = storedName;
     if (welcomeName) welcomeName.textContent = storedName.split(' ')[0];
@@ -80,6 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(storedName)}&background=6366F1&color=fff`;
     if (userAvatar) userAvatar.src = avatarUrl;
     if (profilePageAvatar) profilePageAvatar.src = `${avatarUrl}&size=120`;
+    if (welcomeAvatar) welcomeAvatar.src = `${avatarUrl}&size=80`;
 
     // Sidebar Toggle (Mobile)
     const sidebarToggle = document.getElementById('sidebarToggle');
@@ -129,6 +135,34 @@ document.addEventListener('DOMContentLoaded', () => {
                     }
                 });
             }
+        });
+    }
+
+    // Learning Domain Filtering
+    const catPills = document.querySelectorAll('.learning-categories .cat-pill');
+    const domainSections = document.querySelectorAll('.domain-section');
+
+    if (catPills.length > 0 && domainSections.length > 0) {
+        catPills.forEach(pill => {
+            pill.addEventListener('click', () => {
+                catPills.forEach(p => p.classList.remove('active'));
+                pill.classList.add('active');
+
+                const filter = pill.getAttribute('data-filter');
+
+                domainSections.forEach(section => {
+                    // Slight animation reset
+                    section.style.opacity = '0';
+                    setTimeout(() => {
+                        if (filter === 'all' || section.getAttribute('data-domain') === filter) {
+                            section.style.display = 'block';
+                            setTimeout(() => section.style.opacity = '1', 50);
+                        } else {
+                            section.style.display = 'none';
+                        }
+                    }, 150);
+                });
+            });
         });
     }
 
@@ -302,6 +336,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Query Submission & Recent List
     const recentQueriesList = document.getElementById('recentQueriesList');
+    const queryForm = document.getElementById('queryForm');
     if (queryForm) {
         queryForm.addEventListener('submit', (e) => {
             e.preventDefault();

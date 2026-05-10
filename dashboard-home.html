@@ -53,7 +53,7 @@
     <!-- Main Content -->
     <main class="main-content page-transition">
       <header class="dashboard-header">
-        <div class="menu-toggle" id="sidebarToggle" style="display: block;">
+        <div class="menu-toggle" id="sidebarToggle">
           <i class='bx bx-menu'></i>
         </div>
 
@@ -151,104 +151,130 @@
           </div>
         </div>
 
-        <!-- Quick Actions -->
-        <div class="quick-actions-grid zoom-in"
-          style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem; margin-bottom: 3.5rem;">
-          <a href="resume-builder.html" class="dash-card action-card glass-card glow-effect"
-            style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark);">
-            <div
-              style="background: rgba(99,102,241,0.15); color: var(--primary); padding: 1rem; border-radius: 14px; font-size: 1.8rem;">
-              <i class='bx bxs-file-doc'></i></div>
-            <div style="font-weight: 600; font-size: 1.1rem; color: #fff;">Build Resume</div>
-          </a>
-          <a href="aptitude.html" class="dash-card action-card glass-card glow-effect"
-            style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark);">
-            <div
-              style="background: rgba(16,185,129,0.15); color: #10B981; padding: 1rem; border-radius: 14px; font-size: 1.8rem;">
-              <i class='bx bx-brain'></i></div>
-            <div style="font-weight: 600; font-size: 1.1rem; color: #fff;">Start Test</div>
-          </a>
-          <a href="jobs.html" class="dash-card action-card glass-card glow-effect"
-            style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark);">
-            <div
-              style="background: rgba(245,158,11,0.15); color: #F59E0B; padding: 1rem; border-radius: 14px; font-size: 1.8rem;">
-              <i class='bx bxs-briefcase'></i></div>
-            <div style="font-weight: 600; font-size: 1.1rem; color: #fff;">Apply Jobs</div>
-          </a>
-          <a href="learning.html" class="dash-card action-card glass-card glow-effect"
-            style="display: flex; align-items: center; gap: 1rem; padding: 1.5rem; text-decoration: none; color: var(--text-dark);">
-            <div
-              style="background: rgba(217,70,239,0.15); color: #D946EF; padding: 1rem; border-radius: 14px; font-size: 1.8rem;">
-              <i class='bx bxs-book-open'></i></div>
-            <div style="font-weight: 600; font-size: 1.1rem; color: #fff;">Continue Course</div>
-          </a>
-        </div>
 
-        <!-- Placement Readiness Tracker -->
-        <h3 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.3rem; color: #fff;">Placement Readiness
-          Tracker</h3>
-        <div class="dashboard-grid stats-grid" style="margin-bottom: 3.5rem;">
-          <div class="dash-card zoom-in stat-card glass-card glow-effect" style="padding: 1.8rem;">
-            <div class="circular-progress" style="--progress: 85; width: 70px; height: 70px;">
-              <div class="inner-circle" style="width: 56px; height: 56px; font-size: 0.9rem;"><span
-                  class="animated-counter">85</span>%</div>
+
+        <!-- Top Row: Analytics Cards -->
+        <h3 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.3rem; color: #fff;">Performance Overview</h3>
+        <div class="dashboard-grid stats-grid" style="margin-bottom: 2rem;">
+          <div class="dash-card zoom-in stat-card glass-card glow-effect" style="padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="stat-icon" style="color: var(--primary); background: rgba(99,102,241,0.15); width: 60px; height: 60px; font-size: 1.8rem; border-radius: 14px;">
+                <i class='bx bxs-file-doc'></i>
+              </div>
+              <div class="stat-details">
+                <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.9rem;">Resume Completion</p>
+                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0;"><span class="animated-counter">85</span>%</h3>
+              </div>
             </div>
-            <div class="stat-details" style="margin-left: 1.2rem;">
-              <h3 style="color: #fff; font-size: 1.1rem;">Resume Completion</h3>
-              <p style="color: #10B981; font-weight: 500;">Great progress!</p>
+            <div>
+              <div class="progress-bar-mini" style="height: 6px; background: rgba(255,255,255,0.05);">
+                <div class="progress-fill" style="width: 85%; background: var(--primary); box-shadow: 0 0 10px var(--primary);"></div>
+              </div>
             </div>
           </div>
-          <div class="dash-card zoom-in stat-card glass-card glow-effect"
-            style="transition-delay: 100ms; padding: 1.8rem;">
-            <div class="stat-icon"
-              style="color: #10B981; background: rgba(16, 185, 129, 0.15); width: 60px; height: 60px; font-size: 1.8rem;">
-              <i class='bx bx-brain'></i></div>
-            <div class="stat-details">
-              <h3 style="color: #fff; font-size: 1.3rem;"><span class="animated-counter">780</span><span
-                  style="font-size: 0.9rem; color: var(--text-muted);">/800</span></h3>
-              <p style="color: var(--text-muted); margin-bottom: 0.5rem;">Aptitude Score</p>
-              <div class="progress-bar-mini" style="height: 6px;">
+          
+          <div class="dash-card zoom-in stat-card glass-card glow-effect" style="transition-delay: 100ms; padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="stat-icon" style="color: #10B981; background: rgba(16, 185, 129, 0.15); width: 60px; height: 60px; font-size: 1.8rem; border-radius: 14px;">
+                <i class='bx bx-brain'></i>
+              </div>
+              <div class="stat-details">
+                <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.9rem;">Aptitude Score</p>
+                <h3 style="color: #fff; font-size: 1.5rem; margin-bottom: 0;"><span class="animated-counter">780</span><span style="font-size: 0.9rem; color: var(--text-muted);">/800</span></h3>
+              </div>
+            </div>
+            <div>
+              <div class="progress-bar-mini" style="height: 6px; background: rgba(255,255,255,0.05);">
                 <div class="progress-fill bg-success" style="width: 95%; box-shadow: 0 0 10px #10B981;"></div>
               </div>
             </div>
           </div>
-          <div class="dash-card zoom-in stat-card glass-card glow-effect"
-            style="transition-delay: 200ms; padding: 1.8rem;">
-            <div class="stat-icon"
-              style="color: var(--secondary); background: rgba(217, 70, 239, 0.15); width: 60px; height: 60px; font-size: 1.8rem;">
-              <i class='bx bxs-book-open'></i></div>
-            <div class="stat-details">
-              <h3 class="animated-counter" style="color: #fff; font-size: 1.5rem;">12</h3>
-              <p style="color: var(--text-muted);">Courses Completed</p>
+          
+          <div class="dash-card zoom-in stat-card glass-card glow-effect" style="transition-delay: 200ms; padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="stat-icon" style="color: #F59E0B; background: rgba(245, 158, 11, 0.15); width: 60px; height: 60px; font-size: 1.8rem; border-radius: 14px;">
+                <i class='bx bxs-briefcase'></i>
+              </div>
+              <div class="stat-details">
+                <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.9rem;">Applications Sent</p>
+                <h3 class="animated-counter" style="color: #fff; font-size: 1.5rem; margin-bottom: 0;">24</h3>
+              </div>
+            </div>
+            <div>
+              <div class="progress-bar-mini" style="height: 6px; background: rgba(255,255,255,0.05);">
+                <div class="progress-fill" style="width: 60%; background: #F59E0B; box-shadow: 0 0 10px #F59E0B;"></div>
+              </div>
             </div>
           </div>
-          <div class="dash-card zoom-in stat-card glass-card glow-effect"
-            style="transition-delay: 300ms; padding: 1.8rem;">
-            <div class="stat-icon"
-              style="color: #F59E0B; background: rgba(245, 158, 11, 0.15); width: 60px; height: 60px; font-size: 1.8rem;">
-              <i class='bx bxs-briefcase'></i></div>
-            <div class="stat-details">
-              <h3 class="animated-counter" style="color: #fff; font-size: 1.5rem;">24</h3>
-              <p style="color: var(--text-muted);">Applications Sent</p>
+
+          <div class="dash-card zoom-in stat-card glass-card glow-effect" style="transition-delay: 300ms; padding: 1.8rem; display: flex; flex-direction: column; gap: 1rem;">
+            <div style="display: flex; align-items: center; gap: 1rem;">
+              <div class="stat-icon" style="color: #D946EF; background: rgba(217, 70, 239, 0.15); width: 60px; height: 60px; font-size: 1.8rem; border-radius: 14px;">
+                <i class='bx bxs-book-open'></i>
+              </div>
+              <div class="stat-details">
+                <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.9rem;">Courses Completed</p>
+                <h3 class="animated-counter" style="color: #fff; font-size: 1.5rem; margin-bottom: 0;">12</h3>
+              </div>
+            </div>
+            <div>
+              <div class="progress-bar-mini" style="height: 6px; background: rgba(255,255,255,0.05);">
+                <div class="progress-fill" style="width: 80%; background: #D946EF; box-shadow: 0 0 10px #D946EF;"></div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Continue Learning & Daily Tasks -->
-        <div class="dashboard-grid split-grid" style="margin-bottom: 3.5rem;">
+        <!-- Row 2: Daily Tasks & Continue Learning -->
+        <div class="dashboard-grid split-grid" style="margin-bottom: 2rem;">
+
+          <!-- Daily Tasks -->
+          <div class="dash-card zoom-in task-card glass-card glow-effect" style="padding: 2rem;">
+            <div class="card-header" style="margin-bottom: 1.5rem;">
+              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bx-list-check text-success'></i> Today's Tasks</h3>
+              <span class="badge bg-success-light text-success" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">3/4 Done</span>
+            </div>
+            <div class="task-list" style="margin-top: 1rem; gap: 1.2rem; display: flex; flex-direction: column;">
+              <label class="task-item" style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="task-text" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Complete Java Basics</span>
+              </label>
+              <label class="task-item" style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="task-text" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Attempt Aptitude Test</span>
+              </label>
+              <label class="task-item" style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="task-text" style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Update Resume</span>
+              </label>
+              <label class="task-item" style="padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="task-text" style="color: #fff; font-weight: 500; font-size: 1.05rem;">Apply to Companies</span>
+              </label>
+            </div>
+            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
+              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.8rem;">
+                <span style="color: var(--text-muted);">Daily Goal Progress</span>
+                <span style="color: #10B981; font-weight: 600;">75%</span>
+              </div>
+              <div class="progress-bar-mini" style="width: 100%; height: 8px; background: rgba(0,0,0,0.3);">
+                <div class="progress-fill bg-success" style="width: 75%; box-shadow: 0 0 10px #10B981;"></div>
+              </div>
+            </div>
+          </div>
 
           <!-- Continue Learning Card -->
-          <div class="dash-card zoom-in glass-card glow-effect"
-            style="display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;">
+          <div class="dash-card zoom-in glass-card glow-effect" style="transition-delay: 100ms; display: flex; flex-direction: column; justify-content: space-between; padding: 2rem;">
             <div class="card-header" style="margin-bottom: 1.5rem;">
-              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bxs-graduation text-primary'></i> Continue
-                Learning</h3>
+              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bxs-graduation text-primary'></i> Continue Learning</h3>
             </div>
-            <div
-              style="background: rgba(15, 23, 42, 0.4); padding: 1.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
+            <div style="background: rgba(15, 23, 42, 0.4); padding: 1.8rem; border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); flex: 1; display: flex; flex-direction: column; justify-content: center;">
               <div style="display: flex; gap: 1.5rem; align-items: center; margin-bottom: 2rem;">
-                <div
-                  style="width: 90px; height: 90px; background: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=200&auto=format&fit=crop') center/cover; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
+                <div style="width: 90px; height: 90px; background: url('https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=200&auto=format&fit=crop') center/cover; border-radius: 12px; box-shadow: 0 4px 15px rgba(0,0,0,0.4);">
                 </div>
                 <div>
                   <h4 style="color: #fff; font-size: 1.3rem; margin-bottom: 0.4rem;">Java Fundamentals</h4>
@@ -264,241 +290,149 @@
                   <div class="progress-fill bg-primary" style="width: 45%; box-shadow: 0 0 10px var(--primary);"></div>
                 </div>
               </div>
-              <a href="learning.html" class="btn btn-primary w-100"
-                style="text-align: center; font-size: 1.05rem; padding: 1rem; border-radius: 8px; font-weight: 600;"><i
-                  class='bx bx-play-circle' style="font-size: 1.2rem; vertical-align: middle;"></i> Continue
-                Learning</a>
-            </div>
-          </div>
-
-          <!-- Daily Tasks -->
-          <div class="dash-card zoom-in task-card glass-card glow-effect"
-            style="transition-delay: 100ms; padding: 2rem;">
-            <div class="card-header" style="margin-bottom: 1.5rem;">
-              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bx-list-check text-success'></i> Today's Tasks
-              </h3>
-              <span class="badge bg-success-light text-success" style="padding: 0.4rem 0.8rem; font-size: 0.85rem;">3/4
-                Done</span>
-            </div>
-            <div class="task-list" style="margin-top: 1rem; gap: 1.2rem; display: flex; flex-direction: column;">
-              <label class="task-item"
-                style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-                <span class="task-text"
-                  style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Complete Java
-                  Basics</span>
-              </label>
-              <label class="task-item"
-                style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-                <span class="task-text"
-                  style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Attempt Aptitude
-                  Test</span>
-              </label>
-              <label class="task-item"
-                style="padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: 8px; border: 1px solid rgba(255,255,255,0.05);">
-                <input type="checkbox" checked>
-                <span class="checkmark"></span>
-                <span class="task-text"
-                  style="text-decoration: line-through; color: var(--text-muted); font-size: 1.05rem;">Update
-                  Resume</span>
-              </label>
-              <label class="task-item"
-                style="padding: 0.8rem; background: rgba(255,255,255,0.05); border-radius: 8px; border: 1px solid rgba(255,255,255,0.1);">
-                <input type="checkbox">
-                <span class="checkmark"></span>
-                <span class="task-text" style="color: #fff; font-weight: 500; font-size: 1.05rem;">Apply to
-                  Companies</span>
-              </label>
-            </div>
-            <div style="margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid rgba(255,255,255,0.08);">
-              <div style="display: flex; justify-content: space-between; font-size: 0.95rem; margin-bottom: 0.8rem;">
-                <span style="color: var(--text-muted);">Daily Goal Progress</span>
-                <span style="color: #10B981; font-weight: 600;">75%</span>
-              </div>
-              <div class="progress-bar-mini" style="width: 100%; height: 8px; background: rgba(0,0,0,0.3);">
-                <div class="progress-fill bg-success" style="width: 75%; box-shadow: 0 0 10px #10B981;"></div>
+              <div style="display: flex; gap: 1rem; align-items: center;">
+                 <a href="learning.html" class="btn btn-primary" style="flex: 1; text-align: center; font-size: 1.05rem; padding: 1rem; border-radius: 8px; font-weight: 600;"><i class='bx bx-play-circle' style="font-size: 1.2rem; vertical-align: middle;"></i> Continue</a>
+                 <div style="background: rgba(255,255,255,0.05); padding: 1rem; border-radius: 8px; display: flex; flex-direction: column; align-items: center; justify-content: center; border: 1px solid rgba(255,255,255,0.1);">
+                   <span style="font-size: 0.75rem; color: var(--text-muted); text-transform: uppercase;">Est. Time</span>
+                   <span style="color: #fff; font-weight: 600; font-size: 0.95rem;">45 min</span>
+                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <!-- Recommended Jobs (Horizontal Slider) -->
-        <div class="dashboard-grid" style="margin-bottom: 3.5rem;">
-          <div class="dash-card zoom-in glass-card" style="grid-column: 1 / -1; padding: 2rem;">
+        <!-- Row 3: Recommended Jobs & Upcoming Interviews -->
+        <div class="dashboard-grid split-grid" style="margin-bottom: 2rem;">
+          
+          <!-- Recommended Jobs -->
+          <div class="dash-card zoom-in glass-card glow-effect" style="padding: 2rem;">
             <div class="card-header" style="margin-bottom: 1.5rem;">
-              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bxs-briefcase text-primary'></i> Recommended Jobs
-              </h3>
-              <a href="jobs.html"
-                style="font-size: 0.9rem; color: var(--primary); text-decoration: none; font-weight: 500;">View All</a>
+              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bxs-briefcase text-primary'></i> Recommended Jobs</h3>
+              <a href="jobs.html" style="font-size: 0.9rem; color: var(--primary); text-decoration: none; font-weight: 500;">View All</a>
             </div>
-
-            <div class="horizontal-scroll-container">
+            <div class="horizontal-scroll-container" style="display: flex; gap: 1rem; overflow-x: auto; padding-bottom: 0.5rem;">
               <!-- Job Card 1 -->
-              <div class="action-card job-card-horizontal glass-card glow-effect"
-                style="display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;">
+              <div class="action-card job-card-horizontal glass-card glow-effect" style="min-width: 260px; display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                  <div class="co-logo"
-                    style="background: rgba(255,255,255,0.05); width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                    <i class='bx bxl-meta' style="font-size: 2.2rem; color: #0668E1;"></i></div>
+                  <div class="co-logo" style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <i class='bx bxl-meta' style="font-size: 1.8rem; color: #0668E1;"></i></div>
                   <span class="badge bg-primary-light text-primary" style="font-size: 0.75rem;">95% Match</span>
                 </div>
                 <div>
-                  <h4 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.3rem;">Frontend React Intern</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;">Meta • Remote</p>
+                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem;">Frontend React Intern</h4>
+                  <p style="color: var(--text-muted); font-size: 0.85rem;">Meta • Remote</p>
                 </div>
-                <div
-                  style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: inline-block; width: fit-content; margin-top: auto;">
+                <div style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: inline-block; width: fit-content; margin-top: auto;">
                   <i class='bx bx-money'></i> ₹50k/mo Stipend
                 </div>
-                <a href="jobs.html" class="btn btn-primary w-100" style="margin-top: 0.5rem;">Apply Now</a>
+                <a href="jobs.html" class="btn btn-primary w-100" style="margin-top: 0.5rem; padding: 0.6rem;">Apply Now</a>
               </div>
-
               <!-- Job Card 2 -->
-              <div class="action-card job-card-horizontal glass-card glow-effect"
-                style="display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;">
+              <div class="action-card job-card-horizontal glass-card glow-effect" style="min-width: 260px; display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;">
                 <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                  <div class="co-logo"
-                    style="background: rgba(255,255,255,0.05); width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                    <i class='bx bxl-apple' style="font-size: 2.2rem; color: #fff;"></i></div>
+                  <div class="co-logo" style="background: rgba(255,255,255,0.05); width: 45px; height: 45px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                    <i class='bx bxl-apple' style="font-size: 1.8rem; color: #fff;"></i></div>
                   <span class="badge bg-primary-light text-primary" style="font-size: 0.75rem;">88% Match</span>
                 </div>
                 <div>
-                  <h4 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.3rem;">iOS Developer Intern</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;">Apple • Hyderabad</p>
+                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem;">iOS Developer Intern</h4>
+                  <p style="color: var(--text-muted); font-size: 0.85rem;">Apple • Hyderabad</p>
                 </div>
-                <div
-                  style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: inline-block; width: fit-content; margin-top: auto;">
+                <div style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.4rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: inline-block; width: fit-content; margin-top: auto;">
                   <i class='bx bx-money'></i> ₹60k/mo Stipend
                 </div>
-                <a href="jobs.html" class="btn btn-primary w-100" style="margin-top: 0.5rem;">Apply Now</a>
+                <a href="jobs.html" class="btn btn-primary w-100" style="margin-top: 0.5rem; padding: 0.6rem;">Apply Now</a>
               </div>
+            </div>
+          </div>
 
-              <!-- Job Card 3 -->
-              <div class="action-card job-card-horizontal glass-card glow-effect"
-                style="display: flex; flex-direction: column; gap: 1rem; padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s ease;">
-                <div style="display: flex; justify-content: space-between; align-items: flex-start;">
-                  <div class="co-logo"
-                    style="background: rgba(255,255,255,0.05); width: 55px; height: 55px; display: flex; align-items: center; justify-content: center; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                    <i class='bx bxl-amazon' style="font-size: 2.2rem; color: #FF9900;"></i></div>
-                  <span class="badge bg-primary-light text-primary" style="font-size: 0.75rem;">82% Match</span>
+          <!-- Upcoming Interviews -->
+          <div class="dash-card zoom-in interview-card glass-card glow-effect" style="transition-delay: 100ms; padding: 2rem;">
+            <div class="card-header" style="margin-bottom: 1.5rem;">
+              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bx-calendar text-secondary'></i> Upcoming Interviews</h3>
+              <a href="applications.html" style="font-size: 0.9rem; color: var(--primary); text-decoration: none; font-weight: 500;">View All</a>
+            </div>
+            <div class="interview-list" style="display: flex; flex-direction: column; gap: 1rem;">
+              <div class="interview-item" style="padding: 1.2rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); display: flex; align-items: center; gap: 1rem;">
+                <div class="co-logo" style="background: rgba(255,255,255,0.05); padding: 0.6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="28">
                 </div>
-                <div>
-                  <h4 style="color: #fff; font-size: 1.15rem; margin-bottom: 0.3rem;">SDE I - Full Time</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;">Amazon • Bangalore</p>
+                <div class="int-details" style="flex: 1;">
+                  <h4 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem;">Google India</h4>
+                  <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 0.2rem;"><i class='bx bx-time-five'></i> Oct 15 • 10:00 AM</p>
                 </div>
-                <div
-                  style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.5rem 0.8rem; border-radius: 6px; font-size: 0.85rem; display: inline-block; width: fit-content; margin-top: auto;">
-                  <i class='bx bx-money'></i> 18-24 LPA
+                <div class="int-status">
+                  <span class="badge bg-success-light text-success" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;">Scheduled</span>
                 </div>
-                <a href="jobs.html" class="btn btn-outline w-100" style="margin-top: 0.5rem;">Apply Now</a>
               </div>
-
+              <div class="interview-item" style="padding: 1.2rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); display: flex; align-items: center; gap: 1rem;">
+                <div class="co-logo" style="background: rgba(255,255,255,0.05); padding: 0.6rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
+                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="28">
+                </div>
+                <div class="int-details" style="flex: 1;">
+                  <h4 style="color: #fff; font-size: 1.05rem; margin-bottom: 0.2rem;">Microsoft</h4>
+                  <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 0.2rem;"><i class='bx bx-time-five'></i> Oct 20 • TBD</p>
+                </div>
+                <div class="int-status">
+                  <span class="badge bg-warning-light text-warning" style="padding: 0.4rem 0.6rem; font-size: 0.75rem;">Pending</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Activity Analytics & Upcoming Interviews -->
+        <!-- Row 4: Activity Analytics Charts -->
         <h3 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.3rem; color: #fff;">Activity Analytics</h3>
-        <div class="dashboard-grid" style="grid-template-columns: repeat(3, 1fr); margin-bottom: 3.5rem;">
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); margin-bottom: 2rem;">
           <div class="dash-card zoom-in glass-card glow-effect" style="padding: 1.8rem;">
-            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i
-                class='bx bx-line-chart text-primary'></i> Learning Progress</h3>
-            <div class="chart-container"
-              style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
+            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i class='bx bx-line-chart text-primary'></i> Learning Progress</h3>
+            <div class="chart-container" style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
               <canvas id="learningGrowthChart"></canvas>
             </div>
           </div>
-
           <div class="dash-card zoom-in glass-card glow-effect" style="transition-delay: 100ms; padding: 1.8rem;">
-            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i
-                class='bx bx-pie-chart-alt-2 text-warning'></i> Applications Submitted</h3>
-            <div class="chart-container"
-              style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
+            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i class='bx bx-pie-chart-alt-2 text-warning'></i> Applications Submitted</h3>
+            <div class="chart-container" style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
               <canvas id="applicationProgressChart"></canvas>
             </div>
           </div>
-
           <div class="dash-card zoom-in glass-card glow-effect" style="transition-delay: 200ms; padding: 1.8rem;">
-            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i
-                class='bx bx-bar-chart text-success'></i> Aptitude Scores</h3>
-            <div class="chart-container"
-              style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
+            <h3 style="margin-bottom: 1.5rem; color: #fff; font-size: 1.1rem;"><i class='bx bx-bar-chart text-success'></i> Aptitude Scores</h3>
+            <div class="chart-container" style="position: relative; height: 220px; width: 100%; display: flex; justify-content: center;">
               <canvas id="aptitudeScoreChart"></canvas>
             </div>
           </div>
         </div>
 
-        <!-- Upcoming Interviews Widget -->
-        <div class="dashboard-grid split-grid-large" style="margin-bottom: 3rem;">
-          <div class="dash-card zoom-in interview-card glass-card glow-effect"
-            style="grid-column: 1 / -1; padding: 2rem;">
-            <div class="card-header" style="margin-bottom: 1.5rem;">
-              <h3 style="color: #fff; font-size: 1.2rem;"><i class='bx bx-calendar text-secondary'></i> Upcoming
-                Interviews</h3>
-              <a href="applications.html"
-                style="font-size: 0.9rem; color: var(--primary); text-decoration: none; font-weight: 500;">View All
-                Schedule</a>
-            </div>
-            <div class="interview-list"
-              style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem;">
-
-              <div class="interview-item"
-                style="padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); display: flex; align-items: center; gap: 1rem;">
-                <div class="co-logo"
-                  style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="32">
-                </div>
-                <div class="int-details" style="flex: 1;">
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem;">Google India</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;"><i class='bx bx-briefcase-alt-2'></i> SWE
-                    Intern</p>
-                  <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 0.3rem;"><i class='bx bx-time-five'></i> Oct
-                    15, 2026 - 10:00 AM</p>
-                </div>
-                <div class="int-status">
-                  <span class="badge bg-success-light text-success" style="padding: 0.4rem 0.8rem;">Scheduled</span>
-                </div>
-              </div>
-
-              <div class="interview-item"
-                style="padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); display: flex; align-items: center; gap: 1rem;">
-                <div class="co-logo"
-                  style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="32"></div>
-                <div class="int-details" style="flex: 1;">
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem;">Microsoft</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;"><i class='bx bx-briefcase-alt-2'></i> SDE I
-                  </p>
-                  <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 0.3rem;"><i class='bx bx-time-five'></i> Oct
-                    20, 2026 - TBD</p>
-                </div>
-                <div class="int-status">
-                  <span class="badge bg-warning-light text-warning" style="padding: 0.4rem 0.8rem;">Pending</span>
-                </div>
-              </div>
-
-              <div class="interview-item"
-                style="padding: 1.5rem; background: rgba(15,23,42,0.6); border-radius: var(--radius-md); border: 1px solid rgba(255,255,255,0.05); transition: var(--transition); display: flex; align-items: center; gap: 1rem;">
-                <div class="co-logo"
-                  style="background: rgba(255,255,255,0.05); padding: 0.8rem; border-radius: 12px; border: 1px solid rgba(255,255,255,0.1);">
-                  <img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="32"
-                    style="filter: invert(1);"></div>
-                <div class="int-details" style="flex: 1;">
-                  <h4 style="color: #fff; font-size: 1.1rem; margin-bottom: 0.3rem;">Amazon</h4>
-                  <p style="color: var(--text-muted); font-size: 0.9rem;"><i class='bx bx-briefcase-alt-2'></i> Cloud
-                    Engineer</p>
-                  <p style="color: #cbd5e1; font-size: 0.85rem; margin-top: 0.3rem;"><i class='bx bx-time-five'></i> Sep
-                    30, 2026</p>
-                </div>
-                <div class="int-status">
-                  <span class="badge bg-primary-light text-primary" style="padding: 0.4rem 0.8rem;">Completed</span>
-                </div>
-              </div>
-
-            </div>
+        <!-- Row 5: Achievement & Streak Section -->
+        <h3 class="section-title" style="margin-bottom: 1.5rem; font-size: 1.3rem; color: #fff;">Your Achievements</h3>
+        <div class="dashboard-grid" style="grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); margin-bottom: 2rem;">
+          <div class="dash-card zoom-in glass-card glow-effect" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.2rem;">
+             <div class="stat-icon" style="color: #EF4444; background: rgba(239, 68, 68, 0.15); width: 60px; height: 60px; font-size: 2rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0;">
+               <i class='bx bxs-flame'></i>
+             </div>
+             <div>
+               <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Daily Streak</p>
+               <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 0;">5 Days</h3>
+             </div>
+          </div>
+          <div class="dash-card zoom-in glass-card glow-effect" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.2rem; transition-delay: 100ms;">
+             <div class="stat-icon" style="color: #F59E0B; background: rgba(245, 158, 11, 0.15); width: 60px; height: 60px; font-size: 2rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0;">
+               <i class='bx bxs-star'></i>
+             </div>
+             <div>
+               <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">XP Points</p>
+               <h3 style="color: #fff; font-size: 1.6rem; margin-bottom: 0;">1,250 XP</h3>
+             </div>
+          </div>
+          <div class="dash-card zoom-in glass-card glow-effect" style="padding: 1.8rem; display: flex; align-items: center; gap: 1.2rem; transition-delay: 200ms;">
+             <div class="stat-icon" style="color: var(--primary); background: rgba(99, 102, 241, 0.15); width: 60px; height: 60px; font-size: 2rem; border-radius: 14px; display: flex; align-items: center; justify-content: center; margin: 0;">
+               <i class='bx bxs-medal'></i>
+             </div>
+             <div>
+               <p style="color: var(--text-muted); margin-bottom: 0.2rem; font-size: 0.95rem; text-transform: uppercase; letter-spacing: 1px;">Badges Earned</p>
+               <h3 style="color: #fff; font-size: 1.2rem; margin-bottom: 0; line-height: 1.2;">Resume Master</h3>
+             </div>
           </div>
         </div>
 

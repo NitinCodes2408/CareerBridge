@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -50,7 +50,7 @@
     <!-- Main Content -->
     <main class="main-content page-transition">
       <header class="dashboard-header">
-        <div class="menu-toggle" id="sidebarToggle" style="display: block;">
+        <div class="menu-toggle" id="sidebarToggle">
           <i class='bx bx-menu'></i>
         </div>
         
@@ -61,17 +61,53 @@
         
         <div class="header-actions">
           <div class="notification-icon">
-            <i class='bx bxs-bell'></i>
+            <i class='bx bxs-bell' style="font-size: 1.4rem;"></i>
             <span class="badge-dot"></span>
+
+            <div class="notification-dropdown glass-card">
+              <div class="notif-header">
+                <span>Notifications</span>
+                <span class="badge bg-primary-light text-primary" style="font-size: 0.75rem; padding: 0.2rem 0.5rem;">3 New</span>
+              </div>
+              <div class="notif-list">
+                <a href="jobs.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(16,185,129,0.1); color: #10B981;"><i class='bx bxs-briefcase'></i></div>
+                  <div class="notif-content">
+                    <h4>New Jobs Added!</h4>
+                    <p>Meta and Apple have posted new intern roles matching your profile.</p>
+                    <span class="notif-time">2 hours ago</span>
+                  </div>
+                </a>
+                <a href="resume-builder.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(245,158,11,0.1); color: #F59E0B;"><i class='bx bxs-error-circle'></i></div>
+                  <div class="notif-content">
+                    <h4>Resume Incomplete</h4>
+                    <p>Your resume is missing the latest project details. Update it to improve your ATS score.</p>
+                    <span class="notif-time">5 hours ago</span>
+                  </div>
+                </a>
+                <a href="aptitude.html" class="notif-item">
+                  <div class="notif-icon" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-brain'></i></div>
+                  <div class="notif-content">
+                    <h4>Upcoming Test Reminder</h4>
+                    <p>You have a scheduled mock aptitude test tomorrow at 10 AM.</p>
+                    <span class="notif-time">1 day ago</span>
+                  </div>
+                </a>
+              </div>
+              <div style="padding: 0.8rem; text-align: center; border-top: 1px solid var(--border-color);">
+                <a href="#" style="color: var(--primary); font-size: 0.85rem; font-weight: 500; text-decoration: none;">View All Notifications</a>
+              </div>
+            </div>
           </div>
           <div class="user-profile dropdown-container">
             <span style="font-weight: 500;" id="userNameDisplay">Student User</span>
             <img id="userAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff" alt="User Profile">
-            <div class="dropdown-menu-custom">
-                <a href="profile.html"><i class='bx bx-user'></i> My Profile</a>
-                <a href="support.html"><i class='bx bx-help-circle'></i> Help & Support</a>
-                <div class="dropdown-divider"></div>
-                <a href="index.html" class="text-danger"><i class='bx bx-log-out'></i> Logout</a>
+            <div class="dropdown-menu-custom glass-card">
+              <a href="profile.html"><i class='bx bx-user'></i> My Profile</a>
+              <a href="support.html"><i class='bx bx-help-circle'></i> Help & Support</a>
+              <div class="dropdown-divider"></div>
+              <a href="index.html" class="text-danger"><i class='bx bx-log-out'></i> Logout</a>
             </div>
           </div>
         </div>
@@ -84,12 +120,12 @@
         </div>
         
         <div class="learning-categories">
-          <span class="cat-pill active">All</span>
-          <span class="cat-pill">Java</span>
-          <span class="cat-pill">DSA</span>
-          <span class="cat-pill">Web Dev</span>
-          <span class="cat-pill">AI/ML</span>
-          <span class="cat-pill">Aptitude</span>
+          <span class="cat-pill active" data-filter="all">All</span>
+          <span class="cat-pill" data-filter="java">Java</span>
+          <span class="cat-pill" data-filter="dsa">DSA</span>
+          <span class="cat-pill" data-filter="web-dev">Web Dev</span>
+          <span class="cat-pill" data-filter="ai-ml">AI/ML</span>
+          <span class="cat-pill" data-filter="aptitude">Aptitude</span>
         </div>
 
         <!-- Continue Learning Widget -->
@@ -105,46 +141,680 @@
           <button class="btn btn-primary"><i class='bx bx-play'></i> Resume Course</button>
         </div>
 
-        <div class="dashboard-grid">
-          <!-- Course Card 1 -->
-          <div class="dash-card course-card zoom-in">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500&auto=format&fit=crop" alt="React">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 40h</div>
+        <!-- Web Development Domain -->
+        <div class="domain-section" data-domain="web-dev" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bx-code-alt' style="color: var(--primary);"></i> Web Development
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <!-- Web Dev Course 1 -->
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500&auto=format&fit=crop" alt="React">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 40h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Web Dev</span>
+                <h3>Full Stack MERN</h3>
+                <p>Master React, Node, and MongoDB with industry-level projects.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Full Stack MERN">Start Learning</a>
+              </div>
             </div>
-            <div class="course-body">
-              <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Web Dev</span>
-              <h3>Full Stack MERN</h3>
-              <p>Master React, Node, and MongoDB with industry-level projects.</p>
-              <a href="#" class="btn btn-primary w-100 course-btn" data-title="Full Stack MERN">Start Learning</a>
+            
+            <!-- Web Dev Course 2 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500&auto=format&fit=crop" alt="Frontend">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 25h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Frontend</span>
+                <h3>Advanced UI/UX in React</h3>
+                <p>Build beautiful interfaces with Tailwind CSS and Framer Motion.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Advanced UI/UX in React">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Web Dev Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=500&auto=format&fit=crop" alt="NextJS">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 30h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Fullstack</span>
+                <h3>Next.js 14 Masterclass</h3>
+                <p>Learn App Router, Server Actions, and Auth in Next.js 14.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Next.js 14 Masterclass">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Web Dev Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1618477388954-7852f32655ec?q=80&w=500&auto=format&fit=crop" alt="Vue">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 20h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Frontend</span>
+                <h3>Vue.js 3 Fundamentals</h3>
+                <p>Learn the composition API, Vue Router, and Pinia state management.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Vue.js 3 Fundamentals">Start Learning</a>
+              </div>
+            </div>
+            
+            <!-- Web Dev Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1593720213428-28a5b9e94613?q=80&w=500&auto=format&fit=crop" alt="Angular">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 45h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Frontend</span>
+                <h3>Angular Enterprise Apps</h3>
+                <p>Build scalable apps with Angular 17, RxJS, and NGRX.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Angular Enterprise Apps">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Web Dev Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=500&auto=format&fit=crop" alt="NodeJS">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 35h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Backend</span>
+                <h3>Node.js Architecture</h3>
+                <p>Design REST APIs with Express, TypeScript, and PostgreSQL.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Node.js Architecture">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Web Dev Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=500&auto=format&fit=crop" alt="CSS">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 15h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Styling</span>
+                <h3>Advanced CSS & Animations</h3>
+                <p>Master Flexbox, Grid, CSS Variables, and keyframe animations.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Advanced CSS">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Web Dev Course 8 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 700ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1498050108023-c5249f4df085?q=80&w=500&auto=format&fit=crop" alt="Fullstack">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 50h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Fullstack</span>
+                <h3>Django & React Integration</h3>
+                <p>Build a fullstack app with Python Django backend and React frontend.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Django & React">Start Learning</a>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Course Card 2 -->
-          <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=500&auto=format&fit=crop" alt="Java">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 60h</div>
+        <!-- Data Structures & Algorithms Domain -->
+        <div class="domain-section" data-domain="dsa" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bx-network-chart' style="color: #F59E0B;"></i> Data Structures & Algorithms
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <!-- DSA Course 1 -->
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=500&auto=format&fit=crop" alt="DSA">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 60h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">DSA</span>
+                <h3>Mastering DSA</h3>
+                <p>Crack technical rounds of top product-based companies.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Mastering DSA">Start Learning</a>
+              </div>
             </div>
-            <div class="course-body">
-              <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">DSA</span>
-              <h3>Mastering DSA</h3>
-              <p>Crack technical rounds of top product-based companies.</p>
-              <a href="#" class="btn btn-outline w-100 course-btn" data-title="Mastering DSA">View Details</a>
+            
+            <!-- DSA Course 2 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=500&auto=format&fit=crop" alt="Algorithms">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 35h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Advanced</span>
+                <h3>Dynamic Programming</h3>
+                <p>Deep dive into DP patterns, recursion, and memoization.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Dynamic Programming">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1526379095098-d400fd0bf935?q=80&w=500&auto=format&fit=crop" alt="Graphs">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 20h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Advanced</span>
+                <h3>Graph Theory</h3>
+                <p>Master BFS, DFS, Dijkstra, and complex graph algorithms.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Graph Theory">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1516116216624-53e697fedbea?q=80&w=500&auto=format&fit=crop" alt="System Design">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 40h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Design</span>
+                <h3>System Design Interview</h3>
+                <p>Learn scalable architectures, load balancing, and database sharding.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="System Design">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?q=80&w=500&auto=format&fit=crop" alt="Leetcode">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 80h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Practice</span>
+                <h3>Top 150 LeetCode Patterns</h3>
+                <p>Solve the most frequently asked FAANG interview questions.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="LeetCode Patterns">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1504639725590-34d0984388bd?q=80&w=500&auto=format&fit=crop" alt="Trees">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 15h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Advanced</span>
+                <h3>Advanced Trees & Tries</h3>
+                <p>Master AVL, Red-Black Trees, Segment Trees, and Tries.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Trees and Tries">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=500&auto=format&fit=crop" alt="Math">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 10h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Math</span>
+                <h3>Mathematics for CP</h3>
+                <p>Number theory, combinatorics, and modular arithmetic.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Mathematics for CP">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- DSA Course 8 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 700ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1550439062-609e1531270e?q=80&w=500&auto=format&fit=crop" alt="Strings">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 12h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">Algorithms</span>
+                <h3>String Algorithms</h3>
+                <p>KMP, Rabin-Karp, Z-Algorithm, and suffix arrays deep dive.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="String Algorithms">Start Learning</a>
+              </div>
             </div>
           </div>
+        </div>
 
-          <!-- Course Card 3 -->
-          <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&auto=format&fit=crop" alt="LinkedIn">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 5h</div>
+        <!-- Java Programming Domain -->
+        <div class="domain-section" data-domain="java" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bxl-java' style="color: #EF4444;"></i> Java Programming
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <!-- Java Course 1 -->
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=500&auto=format&fit=crop" alt="Java Core">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 50h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Java</span>
+                <h3>Core Java Development</h3>
+                <p>Complete guide to Java 17 features, OOPs, and Collections.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Core Java Development">Start Learning</a>
+              </div>
             </div>
-            <div class="course-body">
-              <span class="badge bg-warning-light text-warning" style="margin-bottom: 0.5rem; display: inline-block;">Career</span>
-              <h3>LinkedIn Optimization</h3>
-              <p>Learn how to attract top recruiters using an optimized profile.</p>
-              <a href="#" class="btn btn-outline w-100 course-btn" data-title="LinkedIn Optimization">View Details</a>
+            
+            <!-- Java Course 2 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop" alt="Spring Boot">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 45h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Backend</span>
+                <h3>Spring Boot Mastery</h3>
+                <p>Build enterprise microservices and RESTful APIs from scratch.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Spring Boot Mastery">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Java Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555099962-4199c345e5dd?q=80&w=500&auto=format&fit=crop" alt="Microservices">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 35h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Advanced</span>
+                <h3>Microservices with Java</h3>
+                <p>Design scalable architectures using Spring Cloud & Docker.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Microservices with Java">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Java Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1623479322729-28b25c16b011?q=80&w=500&auto=format&fit=crop" alt="Testing">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 15h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Testing</span>
+                <h3>JUnit & Mockito Masterclass</h3>
+                <p>Learn Test-Driven Development (TDD) for Java applications.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="JUnit & Mockito">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Java Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1544383835-bda2bc66a55d?q=80&w=500&auto=format&fit=crop" alt="Hibernate">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 20h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Database</span>
+                <h3>Hibernate & JPA</h3>
+                <p>Master Object Relational Mapping (ORM) and database management.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Hibernate & JPA">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Java Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?q=80&w=500&auto=format&fit=crop" alt="Design Patterns">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 12h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Architecture</span>
+                <h3>Java Design Patterns</h3>
+                <p>Implement SOLID principles and Gang of Four (GoF) patterns.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Java Design Patterns">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Java Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?q=80&w=500&auto=format&fit=crop" alt="Multithreading">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 18h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-danger-light text-danger" style="margin-bottom: 0.5rem; display: inline-block;">Advanced</span>
+                <h3>Multithreading & Concurrency</h3>
+                <p>Master thread pools, locks, synchronization, and atomic variables.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Multithreading">Start Learning</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI/ML Domain -->
+        <div class="domain-section" data-domain="ai-ml" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bx-brain' style="color: #6366F1;"></i> Artificial Intelligence & ML
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1677442136019-21780ecad995?q=80&w=500&auto=format&fit=crop" alt="AI">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 40h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">AI</span>
+                <h3>Generative AI & LLMs</h3>
+                <p>Learn to build apps with OpenAI, LangChain, and vector databases.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Generative AI & LLMs">Start Learning</a>
+              </div>
+            </div>
+            
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?q=80&w=500&auto=format&fit=crop" alt="ML">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 50h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">ML</span>
+                <h3>Machine Learning A-Z</h3>
+                <p>Master Python, Scikit-Learn, and build predictive models.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Machine Learning A-Z">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- AI/ML Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=500&auto=format&fit=crop" alt="Deep Learning">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 45h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Deep Learning</span>
+                <h3>Deep Learning with PyTorch</h3>
+                <p>Build neural networks, CNNs, and RNNs from scratch.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Deep Learning with PyTorch">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- AI/ML Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=500&auto=format&fit=crop" alt="NLP">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 35h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">NLP</span>
+                <h3>Natural Language Processing</h3>
+                <p>Text classification, sentiment analysis, and transformer models.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Natural Language Processing">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- AI/ML Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=500&auto=format&fit=crop" alt="Computer Vision">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 30h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Vision</span>
+                <h3>Computer Vision Bootcamp</h3>
+                <p>Image processing, object detection, and facial recognition using OpenCV.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Computer Vision Bootcamp">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- AI/ML Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=500&auto=format&fit=crop" alt="Data Science">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 50h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Data Science</span>
+                <h3>Data Science & Analytics</h3>
+                <p>Pandas, NumPy, Matplotlib, and advanced data visualization.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Data Science & Analytics">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- AI/ML Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1620712943543-bcc4688e7485?q=80&w=500&auto=format&fit=crop" alt="MLOps">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 25h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Deployment</span>
+                <h3>MLOps & Model Deployment</h3>
+                <p>Deploy ML models using Docker, FastAPI, and AWS.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="MLOps & Model Deployment">Start Learning</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Aptitude Domain -->
+        <div class="domain-section" data-domain="aptitude" style="margin-bottom: 3rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bx-bar-chart-alt-2' style="color: #06B6D4;"></i> Aptitude & Reasoning
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1434030216411-0b793f4b4173?q=80&w=500&auto=format&fit=crop" alt="Aptitude">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 30h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Aptitude</span>
+                <h3>Quantitative Aptitude Masterclass</h3>
+                <p>Speed math, percentages, time & work, and algebra tricks.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Quantitative Aptitude">Start Learning</a>
+              </div>
+            </div>
+            
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1508873699372-7aeab60b44ab?q=80&w=500&auto=format&fit=crop" alt="Logical">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 25h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Reasoning</span>
+                <h3>Logical Reasoning</h3>
+                <p>Puzzles, seating arrangements, and syllogism for campus drives.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Logical Reasoning">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Aptitude Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1596496181848-3091d4878b24?q=80&w=500&auto=format&fit=crop" alt="Verbal">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 20h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Verbal</span>
+                <h3>Verbal Ability & English</h3>
+                <p>Grammar rules, reading comprehension, and vocabulary building.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Verbal Ability">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Aptitude Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=500&auto=format&fit=crop" alt="Data Interpretation">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 18h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Data</span>
+                <h3>Data Interpretation</h3>
+                <p>Pie charts, bar graphs, and tabular data analysis techniques.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Data Interpretation">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Aptitude Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1509228468518-180dd4864904?q=80&w=500&auto=format&fit=crop" alt="Puzzles">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 15h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Puzzles</span>
+                <h3>Company-Specific Puzzles</h3>
+                <p>TCS, Infosys, and Cognizant specific reasoning puzzles.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Company-Specific Puzzles">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Aptitude Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1596495578065-6e0763fa1178?q=80&w=500&auto=format&fit=crop" alt="Speed Math">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 10h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Math</span>
+                <h3>Vedic Mathematics</h3>
+                <p>Mental math strategies to solve complex calculations in seconds.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Vedic Mathematics">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Aptitude Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1518133910546-b6c2fb7d79e3?q=80&w=500&auto=format&fit=crop" alt="Mock Tests">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 25h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-info-light text-info" style="margin-bottom: 0.5rem; display: inline-block;">Practice</span>
+                <h3>Mock Test Series 2024</h3>
+                <p>50+ full-length mock tests based on latest company patterns.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Mock Test Series 2024">Start Learning</a>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Career Readiness Domain -->
+        <div class="domain-section" data-domain="career" style="margin-bottom: 2rem;">
+          <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
+            <h4 style="font-size: 1.25rem; font-weight: 600; color: #fff; display: flex; align-items: center; gap: 0.5rem;">
+              <i class='bx bx-briefcase' style="color: #10B981;"></i> Career Readiness
+            </h4>
+            <a href="#" style="color: var(--text-muted); font-size: 0.9rem; text-decoration: none; transition: 0.3s;" onmouseover="this.style.color='var(--primary)'" onmouseout="this.style.color='var(--text-muted)'">View All</a>
+          </div>
+          <div class="dashboard-grid">
+            <!-- Career Course 1 -->
+            <div class="dash-card course-card zoom-in">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&auto=format&fit=crop" alt="LinkedIn">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 5h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Career</span>
+                <h3>LinkedIn Optimization</h3>
+                <p>Learn how to attract top recruiters using an optimized profile.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="LinkedIn Optimization">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 2 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=500&auto=format&fit=crop" alt="Resume">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 8h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Resume</span>
+                <h3>Resume Building Secrets</h3>
+                <p>Create ATS-friendly resumes that get you shortlisted at top MNCs.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Resume Building Secrets">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 3 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e?q=80&w=500&auto=format&fit=crop" alt="Interview">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 12h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Interview</span>
+                <h3>Crack the HR Interview</h3>
+                <p>Behavioral questions, salary negotiation, and company research.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Crack the HR Interview">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 4 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 300ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1552581234-26160f608093?q=80&w=500&auto=format&fit=crop" alt="Communication">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 20h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Soft Skills</span>
+                <h3>Business Communication</h3>
+                <p>Email etiquette, meeting conduct, and professional English speaking.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Business Communication">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 5 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 400ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1542744173-8e7e53415bb0?q=80&w=500&auto=format&fit=crop" alt="Networking">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 6h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Networking</span>
+                <h3>Strategic Networking</h3>
+                <p>How to get referrals from FAANG engineers and tech leads.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Strategic Networking">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 6 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 500ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1507679799987-c73779587ccf?q=80&w=500&auto=format&fit=crop" alt="Startup">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 15h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Freelance</span>
+                <h3>Freelancing & Consulting</h3>
+                <p>Start your freelance journey on Upwork, Fiverr, and remote jobs.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Freelancing & Consulting">Start Learning</a>
+              </div>
+            </div>
+
+            <!-- Career Course 7 -->
+            <div class="dash-card course-card zoom-in" style="transition-delay: 600ms;">
+              <div class="course-thumb">
+                <img src="https://images.unsplash.com/photo-1503694978374-8a2fa686963a?q=80&w=500&auto=format&fit=crop" alt="Portfolio">
+                <div class="course-duration"><i class='bx bx-time-five'></i> 10h</div>
+              </div>
+              <div class="course-body">
+                <span class="badge bg-success-light text-success" style="margin-bottom: 0.5rem; display: inline-block;">Portfolio</span>
+                <h3>Building a Tech Portfolio</h3>
+                <p>Create a stunning GitHub profile and personal portfolio website.</p>
+                <a href="#" class="btn btn-primary w-100 course-btn" data-title="Building a Tech Portfolio">Start Learning</a>
+              </div>
             </div>
           </div>
         </div>

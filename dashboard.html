@@ -29,14 +29,14 @@
       
       <div class="sidebar-menu">
         <ul>
-          <li><a href="#home" class="active"><i class='bx bxs-dashboard'></i> Dashboard Home</a></li>
-          <li><a href="#profile"><i class='bx bxs-user-detail'></i> My Profile</a></li>
-          <li><a href="#learning"><i class='bx bxs-book-open'></i> Learning Platform</a></li>
-          <li><a href="#applications"><i class='bx bxs-file-find'></i> My Applications</a></li>
-          <li><a href="#jobs"><i class='bx bxs-briefcase'></i> Companies & Jobs</a></li>
-          <li><a href="#resume"><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
-          <li><a href="#aptitude"><i class='bx bx-brain'></i> Aptitude Test</a></li>
-          <li><a href="#support"><i class='bx bx-support'></i> Support & Queries</a></li>
+          <li><a href="dashboard.html" class="active"  ><i class='bx bxs-dashboard'></i> Dashboard Home</a></li>
+          <li><a href="profile.html"><i class='bx bxs-user-detail'></i> My Profile</a></li>
+          <li><a href="learning.html"><i class='bx bxs-book-open'></i> Learning Platform</a></li>
+          <li><a href="applications.html"><i class='bx bxs-file-find'></i> My Applications</a></li>
+          <li><a href="jobs.html"><i class='bx bxs-briefcase'></i> Companies & Jobs</a></li>
+          <li><a href="resume.html"><i class='bx bxs-file-doc'></i> Resume Builder</a></li>
+          <li><a href="aptitude.html"><i class='bx bx-brain'></i> Aptitude Test</a></li>
+          <li><a href="support.html"><i class='bx bx-support'></i> Support & Queries</a></li>
         </ul>
       </div>
       
@@ -72,8 +72,7 @@
       </header>
       
       <div class="dashboard-body">
-        
-        <!-- Welcome Section -->
+<!-- Welcome Section -->
         <div class="welcome-card fade-in-up" id="home">
           <div class="welcome-text" style="display: flex; gap: 1.5rem; align-items: center;">
             <img id="welcomeAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff&size=80" style="border-radius: 50%; border: 3px solid var(--primary);" alt="Student Avatar">
@@ -234,425 +233,160 @@
           </div>
         </div>
 
-        <!-- Section: My Profile -->
-        <div class="section-divider" id="profile">
-          <h3 class="section-title">My Profile</h3>
-          <p class="section-subtitle">Manage your personal and academic details</p>
-        </div>
-        <div class="dash-card zoom-in profile-layout" style="margin-bottom: 3rem;">
-          <div class="profile-left">
-            <div class="profile-image-large">
-              <img id="profilePageAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff&size=120" alt="Profile">
-              <button class="btn btn-icon edit-avatar-btn"><i class='bx bx-camera'></i></button>
+        <!-- Readiness Tracker -->
+        <div class="dashboard-grid stats-grid" style="margin-bottom: 2rem;">
+          <div class="dash-card zoom-in stat-card">
+            <div class="circular-progress" style="--progress: 85;">
+              <div class="inner-circle"><span class="animated-counter">85</span>%</div>
             </div>
-            <div class="profile-badges">
-              <h4>Achievements</h4>
-              <div class="badges-grid">
-                <div class="badge-card tooltip" data-tooltip="Java Beginner"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png" width="32"></div>
-                <div class="badge-card tooltip" data-tooltip="Aptitude Master"><img src="https://cdn-icons-png.flaticon.com/512/2097/2097260.png" width="32"></div>
-                <div class="badge-card tooltip" data-tooltip="Resume Pro"><img src="https://cdn-icons-png.flaticon.com/512/2912/2912761.png" width="32"></div>
-              </div>
+            <div class="stat-details" style="margin-left: 1rem;">
+              <h3>Resume Completion</h3>
+              <p>Great progress!</p>
             </div>
           </div>
-          <div class="profile-right">
-            <form class="lead-form grid-form">
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" value="Student User" id="profName">
-              </div>
-              <div class="form-group">
-                <label>College/University</label>
-                <input type="text" value="National Institute of Technology">
-              </div>
-              <div class="form-group">
-                <label>Graduation Year</label>
-                <input type="text" value="2027">
-              </div>
-              <div class="form-group">
-                <label>LinkedIn URL</label>
-                <input type="url" placeholder="https://linkedin.com/in/username">
-              </div>
-              <div class="form-group full-width">
-                <label>Top Skills</label>
-                <input type="text" value="Java, React, Node.js, SQL, DSA">
-              </div>
-              <div class="form-group full-width">
-                <label>Resume Upload</label>
-                <div class="file-upload-box">
-                  <i class='bx bx-cloud-upload'></i>
-                  <p>Drag & drop or click to upload PDF</p>
+          <div class="dash-card zoom-in stat-card" style="transition-delay: 100ms;">
+            <div class="stat-icon" style="color: #10B981; background: rgba(16, 185, 129, 0.1);"><i class='bx bx-brain'></i></div>
+            <div class="stat-details">
+              <h3><span class="animated-counter">780</span>/800</h3>
+              <p>Aptitude Score</p>
+              <div class="progress-bar-mini"><div class="progress-fill bg-success" style="width: 95%;"></div></div>
+            </div>
+          </div>
+          <div class="dash-card zoom-in stat-card" style="transition-delay: 200ms;">
+            <div class="stat-icon" style="color: var(--secondary); background: rgba(217, 70, 239, 0.1);"><i class='bx bxs-book-open'></i></div>
+            <div class="stat-details">
+              <h3 class="animated-counter">12</h3>
+              <p>Courses Completed</p>
+            </div>
+          </div>
+          <div class="dash-card zoom-in stat-card" style="transition-delay: 300ms;">
+            <div class="stat-icon" style="color: #F59E0B; background: rgba(245, 158, 11, 0.1);"><i class='bx bxs-briefcase'></i></div>
+            <div class="stat-details">
+              <h3 class="animated-counter">24</h3>
+              <p>Applications Submitted</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2-Column Layout for Tasks & Interviews -->
+        <div class="dashboard-grid split-grid" style="margin-bottom: 3rem;">
+          <!-- Daily Tasks -->
+          <div class="dash-card zoom-in task-card">
+            <div class="card-header">
+              <h3><i class='bx bx-list-check text-primary'></i> Today's Tasks</h3>
+              <span class="badge bg-primary-light text-primary">3 Remaining</span>
+            </div>
+            <div class="task-list">
+              <label class="task-item">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="task-text">Complete Java Basics</span>
+              </label>
+              <label class="task-item">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="task-text">Attempt Aptitude Test</span>
+              </label>
+              <label class="task-item">
+                <input type="checkbox" checked>
+                <span class="checkmark"></span>
+                <span class="task-text" style="text-decoration: line-through; opacity: 0.5;">Update Resume</span>
+              </label>
+              <label class="task-item">
+                <input type="checkbox">
+                <span class="checkmark"></span>
+                <span class="task-text">Apply to 2 Companies</span>
+              </label>
+            </div>
+          </div>
+
+          <!-- Upcoming Interviews -->
+          <div class="dash-card zoom-in interview-card" style="transition-delay: 100ms;">
+            <div class="card-header">
+              <h3><i class='bx bx-calendar text-secondary'></i> Upcoming Interviews</h3>
+            </div>
+            <div class="interview-list">
+              <div class="interview-item">
+                <div class="co-logo" style="background: #1e293b; padding: 0.5rem; border-radius: 8px;"><img src="https://upload.wikimedia.org/wikipedia/commons/5/53/Google_%22G%22_Logo.svg" width="24"></div>
+                <div class="int-details">
+                  <h4>Google India</h4>
+                  <p>SWE Intern • Oct 15, 2026</p>
+                </div>
+                <div class="int-status">
+                  <span class="badge bg-success-light text-success">Scheduled</span>
                 </div>
               </div>
-              <div class="form-group full-width" style="margin-top: 1rem;">
-                <button type="button" class="btn btn-primary"><i class='bx bx-save'></i> Save Changes</button>
+              <div class="interview-item">
+                <div class="co-logo" style="background: #1e293b; padding: 0.5rem; border-radius: 8px;"><img src="https://upload.wikimedia.org/wikipedia/commons/4/44/Microsoft_logo.svg" width="24"></div>
+                <div class="int-details">
+                  <h4>Microsoft</h4>
+                  <p>SDE I • Oct 20, 2026</p>
+                </div>
+                <div class="int-status">
+                  <span class="badge bg-warning-light text-warning">Pending</span>
+                </div>
               </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Section: Learning Platform & LinkedIn -->
-        <div class="section-divider" id="learning">
-          <h3 class="section-title">Learning Platform</h3>
-          <p class="section-subtitle">Level up your skills with curated courses</p>
-        </div>
-        
-        <div class="learning-categories">
-          <span class="cat-pill active">All</span>
-          <span class="cat-pill">Java</span>
-          <span class="cat-pill">DSA</span>
-          <span class="cat-pill">Web Dev</span>
-          <span class="cat-pill">AI/ML</span>
-          <span class="cat-pill">Aptitude</span>
-        </div>
-
-        <!-- Continue Learning Widget -->
-        <div class="continue-learning-card dash-card zoom-in" style="margin-bottom: 2rem; display: flex; flex-direction: row; align-items: center; gap: 2rem; background: linear-gradient(135deg, rgba(99,102,241,0.1), rgba(30,41,59,0.5)); border-color: rgba(99,102,241,0.3);">
-          <div style="flex: 1;">
-            <p style="color: var(--primary); font-weight: 600; font-size: 0.9rem; margin-bottom: 0.5rem; flex:unset;">CONTINUE LEARNING</p>
-            <h3 style="margin-bottom: 0.5rem;">Data Structures & Algorithms in Java</h3>
-            <div style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
-              <div class="progress-bar-mini" style="width: 200px;"><div class="progress-fill" style="width: 65%;"></div></div>
-              <span style="font-size: 0.85rem; color: var(--text-muted);">65% Completed</span>
-            </div>
-          </div>
-          <button class="btn btn-primary"><i class='bx bx-play'></i> Resume Course</button>
-        </div>
-
-        <div class="dashboard-grid">
-          <!-- Course Card 1 -->
-          <div class="dash-card course-card zoom-in">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1633356122544-f134324a6cee?q=80&w=500&auto=format&fit=crop" alt="React">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 40h</div>
-            </div>
-            <div class="course-body">
-              <span class="badge bg-primary-light text-primary" style="margin-bottom: 0.5rem; display: inline-block;">Web Dev</span>
-              <h3>Full Stack MERN</h3>
-              <p>Master React, Node, and MongoDB with industry-level projects.</p>
-              <a href="#" class="btn btn-primary w-100 course-btn" data-title="Full Stack MERN">Start Learning</a>
-            </div>
-          </div>
-
-          <!-- Course Card 2 -->
-          <div class="dash-card course-card zoom-in" style="transition-delay: 100ms;">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1555949963-aa79dcee981c?q=80&w=500&auto=format&fit=crop" alt="Java">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 60h</div>
-            </div>
-            <div class="course-body">
-              <span class="badge bg-secondary-light text-secondary" style="margin-bottom: 0.5rem; display: inline-block;">DSA</span>
-              <h3>Mastering DSA</h3>
-              <p>Crack technical rounds of top product-based companies.</p>
-              <a href="#" class="btn btn-outline w-100 course-btn" data-title="Mastering DSA">View Details</a>
-            </div>
-          </div>
-
-          <!-- Course Card 3 -->
-          <div class="dash-card course-card zoom-in" style="transition-delay: 200ms;">
-            <div class="course-thumb">
-              <img src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=500&auto=format&fit=crop" alt="LinkedIn">
-              <div class="course-duration"><i class='bx bx-time-five'></i> 5h</div>
-            </div>
-            <div class="course-body">
-              <span class="badge bg-warning-light text-warning" style="margin-bottom: 0.5rem; display: inline-block;">Career</span>
-              <h3>LinkedIn Optimization</h3>
-              <p>Learn how to attract top recruiters using an optimized profile.</p>
-              <a href="#" class="btn btn-outline w-100 course-btn" data-title="LinkedIn Optimization">View Details</a>
+              <div class="interview-item">
+                <div class="co-logo" style="background: #1e293b; padding: 0.5rem; border-radius: 8px;"><img src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Amazon_logo.svg" width="24" style="filter: invert(1);"></div>
+                <div class="int-details">
+                  <h4>Amazon</h4>
+                  <p>Cloud Engineer • Sep 30, 2026</p>
+                </div>
+                <div class="int-status">
+                  <span class="badge bg-primary-light text-primary">Completed</span>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        <!-- Section: Companies / Jobs -->
-        <div class="section-divider" id="jobs">
-          <h3 class="section-title">Companies & Jobs</h3>
-          <p class="section-subtitle">Find your dream role</p>
-        </div>
-        
-        <div class="jobs-filters">
-          <div class="search-box">
-            <i class='bx bx-search'></i>
-            <input type="text" placeholder="Search roles or companies...">
-          </div>
-          <div class="filter-chips">
-            <span class="chip active">All</span>
-            <span class="chip">Internship</span>
-            <span class="chip">Full-Time</span>
-            <span class="chip">Remote</span>
-          </div>
-        </div>
-
-        <div class="dashboard-grid">
+        <!-- Recommended Jobs Section -->
+        <h3 class="section-title" style="margin-bottom: 1.5rem;">Recommended Jobs</h3>
+        <div class="dashboard-grid" style="margin-bottom: 3rem;">
           <div class="dash-card job-card zoom-in">
             <div class="job-header">
-              <div class="co-logo"><i class='bx bxl-amazon' style="font-size: 2rem; color: #FF9900;"></i></div>
-              <span class="badge bg-success-light text-success">Actively Hiring</span>
+              <div class="co-logo"><i class='bx bxl-meta' style="font-size: 2.5rem; color: #0668E1;"></i></div>
+              <span class="badge bg-primary-light text-primary">95% Match</span>
             </div>
-            <h3>Software Dev Engineer I</h3>
-            <p class="co-name">Amazon India</p>
-            <div class="job-tags">
-              <span><i class='bx bx-map'></i> Bangalore</span>
-              <span><i class='bx bx-money'></i> 18-24 LPA</span>
-              <span><i class='bx bx-briefcase'></i> Full-Time</span>
+            <h3>Frontend React Intern</h3>
+            <p class="co-name" style="color: var(--text-muted); margin-bottom: 1rem;">Meta • Remote</p>
+            <div class="job-tags" style="margin-bottom: 1.5rem;">
+              <span style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem;"><i class='bx bx-money'></i> ₹50k/mo Stipend</span>
             </div>
-            <p class="job-eligibility">Eligibility: B.Tech/BE (CS/IT) 2026/27 batch. 7.5+ CGPA.</p>
             <a href="#" class="btn btn-primary w-100 apply-btn">Apply Now</a>
           </div>
 
           <div class="dash-card job-card zoom-in" style="transition-delay: 100ms;">
             <div class="job-header">
-              <div class="co-logo"><i class='bx bxl-meta' style="font-size: 2rem; color: #0668E1;"></i></div>
-              <span class="badge bg-warning-light text-warning">Closes in 2 days</span>
+              <div class="co-logo"><i class='bx bxl-apple' style="font-size: 2.5rem; color: #fff;"></i></div>
+              <span class="badge bg-primary-light text-primary">88% Match</span>
             </div>
-            <h3>Frontend React Intern</h3>
-            <p class="co-name">Meta</p>
-            <div class="job-tags">
-              <span><i class='bx bx-map'></i> Remote</span>
-              <span><i class='bx bx-money'></i> ₹50k/mo</span>
-              <span><i class='bx bx-briefcase'></i> Internship</span>
+            <h3>iOS Developer Intern</h3>
+            <p class="co-name" style="color: var(--text-muted); margin-bottom: 1rem;">Apple • Hyderabad</p>
+            <div class="job-tags" style="margin-bottom: 1.5rem;">
+              <span style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem;"><i class='bx bx-money'></i> ₹60k/mo Stipend</span>
             </div>
-            <p class="job-eligibility">Eligibility: 3rd year students. Strong React JS skills.</p>
             <a href="#" class="btn btn-primary w-100 apply-btn">Apply Now</a>
           </div>
           
           <div class="dash-card job-card zoom-in" style="transition-delay: 200ms;">
             <div class="job-header">
-              <div class="co-logo"><i class='bx bxl-apple' style="font-size: 2rem; color: #fff;"></i></div>
+              <div class="co-logo"><i class='bx bxl-amazon' style="font-size: 2.5rem; color: #FF9900;"></i></div>
+              <span class="badge bg-primary-light text-primary">82% Match</span>
             </div>
-            <h3>Data Scientist</h3>
-            <p class="co-name">Apple</p>
-            <div class="job-tags">
-              <span><i class='bx bx-map'></i> Hyderabad</span>
-              <span><i class='bx bx-money'></i> 22 LPA</span>
-              <span><i class='bx bx-briefcase'></i> Full-Time</span>
+            <h3>SDE I - Full Time</h3>
+            <p class="co-name" style="color: var(--text-muted); margin-bottom: 1rem;">Amazon • Bangalore</p>
+            <div class="job-tags" style="margin-bottom: 1.5rem;">
+              <span style="background: rgba(16, 185, 129, 0.1); color: #10B981; padding: 0.3rem 0.6rem; border-radius: 4px; font-size: 0.8rem;"><i class='bx bx-money'></i> 18-24 LPA</span>
             </div>
-            <p class="job-eligibility">Eligibility: M.Tech/B.Tech with strong ML portfolio.</p>
-            <a href="#" class="btn btn-outline w-100 apply-btn">Apply Now</a>
+            <a href="#" class="btn btn-primary w-100 apply-btn">Apply Now</a>
           </div>
         </div>
 
-        <!-- Section: My Applications -->
-        <div class="section-divider" id="applications">
-          <h3 class="section-title">My Applications</h3>
-          <p class="section-subtitle">Track your hiring status</p>
-        </div>
-        <div class="dashboard-grid">
-          <!-- Progress Chart -->
-          <div class="dash-card zoom-in">
-            <h3 style="margin-bottom: 1.5rem;">Funnel Overview</h3>
-            <div class="chart-container" style="position: relative; height: 250px; width: 100%; display: flex; justify-content: center;">
-              <canvas id="applicationProgressChart"></canvas>
-            </div>
-          </div>
-          
-          <!-- Detailed List -->
-          <div class="dash-card zoom-in" style="grid-column: span 2; transition-delay: 100ms; display: flex; flex-direction: column;">
-            <h3 style="margin-bottom: 1.5rem;">Application Tracker</h3>
-            <div class="table-responsive" style="overflow-x: auto; flex: 1;">
-              <table class="modern-table">
-                <thead>
-                  <tr>
-                    <th>Company</th>
-                    <th>Role</th>
-                    <th>Applied On</th>
-                    <th>Status</th>
-                  </tr>
-                </thead>
-                <tbody id="appliedJobsList">
-                  <tr>
-                    <td>
-                      <div class="td-co">
-                        <i class='bx bxl-google text-danger'></i> Google
-                      </div>
-                    </td>
-                    <td>SWE Intern</td>
-                    <td>May 01, 2026</td>
-                    <td><span class="status-badge status-interview">Interview Scheduled</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="td-co">
-                        <i class='bx bxs-buildings text-primary'></i> StartupX
-                      </div>
-                    </td>
-                    <td>Frontend Dev</td>
-                    <td>Apr 28, 2026</td>
-                    <td><span class="status-badge status-review">Under Review</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="td-co">
-                        <i class='bx bxl-microsoft text-info'></i> Microsoft
-                      </div>
-                    </td>
-                    <td>Data Analyst</td>
-                    <td>Apr 15, 2026</td>
-                    <td><span class="status-badge status-rejected">Rejected</span></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <div class="td-co">
-                        <i class='bx bxl-amazon text-warning'></i> Amazon
-                      </div>
-                    </td>
-                    <td>SDE I</td>
-                    <td>May 05, 2026</td>
-                    <td><span class="status-badge status-applied">Applied</span></td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
-          </div>
-        </div>
+        <!-- Section: My Profile -->
+        
+      
 
-        <!-- Section: Resume Builder -->
-        <div class="section-divider" id="resume">
-          <h3 class="section-title">Resume Builder</h3>
-          <p class="section-subtitle">Craft an ATS-friendly resume</p>
-        </div>
-        <div class="dashboard-grid split-grid-large">
-          <div class="dash-card zoom-in resume-form-card">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-              <h3>Fill Details</h3>
-              <div class="ats-score-badge">ATS Score: <strong>82/100</strong></div>
-            </div>
-            
-            <form id="resumeForm" class="lead-form grid-form" style="background: transparent; padding: 0; box-shadow: none;">
-              <!-- Personal -->
-              <h4 class="form-section-title">Personal Info</h4>
-              <div class="form-group full-width">
-                <label for="resName">Full Name</label>
-                <input type="text" id="resName" placeholder="e.g. John Doe" required>
-              </div>
-              <div class="form-group full-width">
-                <label for="resRole">Target Role</label>
-                <input type="text" id="resRole" placeholder="e.g. Full Stack Developer" required>
-              </div>
-              
-              <!-- Education -->
-              <h4 class="form-section-title">Education</h4>
-              <div class="form-group full-width">
-                <label for="resEducation">Highest Degree</label>
-                <input type="text" id="resEducation" placeholder="e.g. B.Tech Computer Science" required>
-              </div>
-              
-              <!-- Skills -->
-              <h4 class="form-section-title">Skills</h4>
-              <div class="form-group full-width">
-                <label for="resSkills">Key Skills (comma separated)</label>
-                <input type="text" id="resSkills" placeholder="e.g. Java, Spring Boot, React, SQL" required>
-              </div>
-              
-              <!-- Experience -->
-              <h4 class="form-section-title">Experience / Projects</h4>
-              <div class="form-group full-width">
-                <label for="resExp">Latest Experience</label>
-                <textarea id="resExp" rows="3" placeholder="Developed a React-based dashboard..."></textarea>
-              </div>
-
-              <button type="submit" class="btn btn-primary full-width" style="margin-top: 1rem;"><i class='bx bx-refresh'></i> Update Preview</button>
-            </form>
-          </div>
-
-          <div class="dash-card zoom-in resume-preview-card" style="transition-delay: 100ms;">
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem;">
-              <h3>Live Preview</h3>
-              <button id="downloadPdfBtn" class="btn btn-outline btn-sm">
-                <i class='bx bxs-download'></i> Export PDF
-              </button>
-            </div>
-            <div id="resumePreview" class="resume-preview-doc">
-              <div class="doc-header">
-                <h2 id="prevName">John Doe</h2>
-                <p id="prevRole">Full Stack Developer</p>
-              </div>
-              <div class="doc-section">
-                <h4>Education</h4>
-                <p id="prevEdu">B.Tech Computer Science</p>
-              </div>
-              <div class="doc-section">
-                <h4>Skills</h4>
-                <div class="skill-tags" id="prevSkillsContainer">
-                  <span>Java</span><span>React</span><span>SQL</span>
-                </div>
-              </div>
-              <div class="doc-section">
-                <h4>Experience</h4>
-                <p id="prevExpText">Developed a React-based dashboard...</p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Section: Aptitude Test & Query Box -->
-        <div class="section-divider" id="aptitude">
-          <h3 class="section-title">Preparation & Support</h3>
-          <p class="section-subtitle">Practice tests and mentor support</p>
-        </div>
-        <div class="dashboard-grid split-grid" style="margin-top: 2rem;">
-          
-          <!-- Aptitude Test -->
-          <div class="dash-card zoom-in aptitude-card">
-            <div class="card-header" style="justify-content: space-between; display: flex;">
-              <h3><i class='bx bx-brain text-secondary'></i> Aptitude Mock Test</h3>
-              <div class="quiz-timer"><i class='bx bx-stopwatch'></i> <span id="quizTimerDisplay">15:00</span></div>
-            </div>
-            
-            <div class="quiz-categories">
-              <span class="q-cat active">Quantitative</span>
-              <span class="q-cat">Logical</span>
-              <span class="q-cat">Verbal</span>
-            </div>
-
-            <form id="quizForm" class="quiz-interface">
-              <div class="quiz-progress-text">Question <span id="qCurrent">1</span> of 5</div>
-              <p id="quizQuestionText" class="quiz-question">Q. A train running at 72 km/hr crosses a pole in 15 seconds. What is the length of the train?</p>
-              <div class="quiz-options" id="quizOptionsContainer">
-                <!-- Options populated by JS -->
-              </div>
-              <div class="quiz-actions" style="display: flex; gap: 1rem;">
-                <button type="button" id="quizPrevBtn" class="btn btn-outline" disabled>Previous</button>
-                <button type="submit" id="quizSubmitBtn" class="btn btn-primary" style="flex: 1;">Next / Submit</button>
-              </div>
-            </form>
-            <div id="quizResult" class="quiz-result-card" style="display: none;">
-              <div class="result-circle">
-                <h2 id="finalScore">4/5</h2>
-                <p>Excellent!</p>
-              </div>
-              <button class="btn btn-outline w-100" onclick="location.reload()">Take Another Test</button>
-            </div>
-          </div>
-
-          <!-- Query Box -->
-          <div class="dash-card zoom-in query-card" id="support" style="transition-delay: 100ms;">
-            <div class="card-header">
-              <h3><i class='bx bx-support text-primary'></i> Mentor Support Ticket</h3>
-            </div>
-            <p style="margin-bottom: 1.5rem; color: var(--text-muted); font-size: 0.9rem;">Submit your query to our placement mentors.</p>
-            
-            <form id="queryForm" class="lead-form grid-form" style="background: transparent; padding: 0; box-shadow: none;">
-              <div class="form-group full-width" style="margin-bottom: 1rem;">
-                <input type="text" id="querySubject" placeholder="Subject (e.g. Resume Review Request)" required style="padding: 0.8rem; background: var(--bg-main); border: 1px solid var(--border-color); border-radius: var(--radius-md); width: 100%; color: #fff;">
-              </div>
-              <div class="form-group full-width" style="margin-bottom: 1rem;">
-                <textarea id="queryDesc" placeholder="Describe your doubt in detail..." rows="4" required style="width: 100%; padding: 0.8rem; border: 1px solid var(--border-color); background-color: var(--bg-main); border-radius: var(--radius-md); font-family: inherit; font-size: 0.95rem; color: #fff;"></textarea>
-              </div>
-              <button type="submit" class="btn btn-outline full-width">Submit Ticket</button>
-            </form>
-            
-            <div id="recentQueriesList" style="margin-top: 2rem;">
-              <h4 style="font-size: 0.95rem; margin-bottom: 1rem; color: var(--text-dark); border-bottom: 1px solid var(--border-color); padding-bottom: 0.5rem;">Previous Tickets</h4>
-              <div class="query-item fade-in-up">
-                  <div class="q-left">
-                    <span style="color: var(--text-dark); font-weight: 500; display: block;">Mock Interview Feedback</span>
-                    <span style="font-size: 0.75rem; color: var(--text-muted);">2 days ago</span>
-                  </div>
-                  <span class="query-status resolved" style="background: rgba(16,185,129,0.1); color: #10B981;">Resolved</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
 
       </div>
     </main>

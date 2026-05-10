@@ -458,29 +458,6 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sidebar active state update on scroll
-    const sections = document.querySelectorAll('.section-divider, #home');
-    const navLinks = document.querySelectorAll('.sidebar-menu a');
-    
-    if(sections.length > 0 && navLinks.length > 0) {
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (scrollY >= sectionTop - 150) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    }
-
     // Intersection Observer for scroll animations
     const observerOptions = {
         threshold: 0.1,

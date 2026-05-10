@@ -14,13 +14,14 @@ document.addEventListener('DOMContentLoaded', () => {
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Authenticating...';
             
             // Extract name from "database" or fallback to email
-            const email = document.getElementById('email').value;
+            const email = document.getElementById('email').value.trim().toLowerCase();
             let users = JSON.parse(localStorage.getItem('careerBridgeUsers')) || {};
             let displayName = users[email];
             
             if (!displayName) {
-                const namePart = email.split('@')[0];
-                displayName = namePart.charAt(0).toUpperCase() + namePart.slice(1);
+                let namePart = email.split('@')[0];
+                namePart = namePart.replace(/[._]/g, ' ');
+                displayName = namePart.split(' ').map(word => word.charAt(0).toUpperCase() + word.slice(1)).join(' ');
             }
             localStorage.setItem('careerBridgeUser', displayName);
             
@@ -50,8 +51,8 @@ document.addEventListener('DOMContentLoaded', () => {
             const btn = signupForm.querySelector('button[type="submit"]');
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Creating Account...';
             
-            const fullName = document.getElementById('fullName').value;
-            const email = document.getElementById('email').value;
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim().toLowerCase();
             
             let users = JSON.parse(localStorage.getItem('careerBridgeUsers')) || {};
             users[email] = fullName;
@@ -66,15 +67,19 @@ document.addEventListener('DOMContentLoaded', () => {
     // Load User Profile Data
     const userNameDisplay = document.getElementById('userNameDisplay');
     const userAvatar = document.getElementById('userAvatar');
-    if (userNameDisplay) {
-        const storedName = localStorage.getItem('careerBridgeUser');
-        if (storedName) {
-            userNameDisplay.textContent = storedName;
-            if (userAvatar) {
-                userAvatar.src = `https://ui-avatars.com/api/?name=${encodeURIComponent(storedName)}&background=6366F1&color=fff`;
-            }
-        }
-    }
+    const welcomeName = document.getElementById('welcomeName');
+    const profilePageAvatar = document.getElementById('profilePageAvatar');
+    const profName = document.getElementById('profName');
+
+    const storedName = localStorage.getItem('careerBridgeUser') || 'Student User';
+    
+    if (userNameDisplay) userNameDisplay.textContent = storedName;
+    if (welcomeName) welcomeName.textContent = storedName.split(' ')[0];
+    if (profName) profName.value = storedName;
+    
+    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(storedName)}&background=6366F1&color=fff`;
+    if (userAvatar) userAvatar.src = avatarUrl;
+    if (profilePageAvatar) profilePageAvatar.src = `${avatarUrl}&size=120`;
 
     // Sidebar Toggle (Mobile)
     const sidebarToggle = document.getElementById('sidebarToggle');
@@ -96,22 +101,34 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Resume Builder Preview Toggle
+    // Resume Builder Preview Update
     const resumeForm = document.getElementById('resumeForm');
-    const previewArea = document.getElementById('resumePreview');
-    if (resumeForm && previewArea) {
+    if (resumeForm) {
         resumeForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
             const name = document.getElementById('resName').value;
+            const role = document.getElementById('resRole').value;
             const education = document.getElementById('resEducation').value;
             const skills = document.getElementById('resSkills').value;
+            const exp = document.getElementById('resExp').value;
             
-            document.getElementById('prevName').textContent = name;
-            document.getElementById('prevEdu').textContent = education;
-            document.getElementById('prevSkills').textContent = skills;
+            if(document.getElementById('prevName')) document.getElementById('prevName').textContent = name;
+            if(document.getElementById('prevRole')) document.getElementById('prevRole').textContent = role;
+            if(document.getElementById('prevEdu')) document.getElementById('prevEdu').textContent = education;
+            if(document.getElementById('prevExpText')) document.getElementById('prevExpText').textContent = exp || "No experience provided.";
             
-            previewArea.classList.add('active');
+            const skillsContainer = document.getElementById('prevSkillsContainer');
+            if(skillsContainer) {
+                skillsContainer.innerHTML = '';
+                skills.split(',').forEach(skill => {
+                    if(skill.trim()) {
+                        const span = document.createElement('span');
+                        span.textContent = skill.trim();
+                        skillsContainer.appendChild(span);
+                    }
+                });
+            }
         });
     }
 
@@ -174,100 +191,113 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Advanced Quiz Logic
     const quizQuestions = [
-        { q: "Q. What is the next number in the series? 2, 6, 12, 20, ?", options: ["24", "30", "36"], correct: 1 },
-        { q: "Q. If A is the brother of B, and B is the sister of C, how is A related to C?", options: ["Brother", "Cousin", "Uncle"], correct: 0 },
-        { q: "Q. A train running at 72 km/hr crosses a pole in 15 seconds. What is the length of the train?", options: ["200m", "250m", "300m"], correct: 2 }
+        { q: "Q1. A train running at 72 km/hr crosses a pole in 15 seconds. What is the length of the train?", options: ["200m", "250m", "300m"], correct: 2 },
+        { q: "Q2. If A is the brother of B, and B is the sister of C, how is A related to C?", options: ["Brother", "Cousin", "Uncle"], correct: 0 },
+        { q: "Q3. What is the next number in the series? 2, 6, 12, 20, ?", options: ["24", "30", "36"], correct: 1 },
+        { q: "Q4. A shopkeeper sells an article at 10% loss. If he had sold it for Rs 50 more, he would have gained 10%. What is the cost price?", options: ["Rs 250", "Rs 300", "Rs 200"], correct: 0 },
+        { q: "Q5. Pointing to a photograph, a man said, 'I have no brother or sister but that man's father is my father's son.' Whose photograph was it?", options: ["His own", "His son's", "His father's"], correct: 1 }
     ];
     let currentQuizIndex = 0;
+    let score = 0;
     
     const quizQuestionText = document.getElementById('quizQuestionText');
     const quizOptionsContainer = document.getElementById('quizOptionsContainer');
     const quizSubmitBtn = document.getElementById('quizSubmitBtn');
+    const quizPrevBtn = document.getElementById('quizPrevBtn');
+    const qCurrent = document.getElementById('qCurrent');
+    const quizForm = document.getElementById('quizForm');
+    const quizResultCard = document.getElementById('quizResult');
+    const finalScoreDisplay = document.getElementById('finalScore');
+    const quizTimerDisplay = document.getElementById('quizTimerDisplay');
+    
+    let timerInterval;
+    let timeLeft = 900; // 15 mins
+    let userAnswers = new Array(quizQuestions.length).fill(null);
+    
+    function updateTimer() {
+        if(!quizTimerDisplay) return;
+        const minutes = Math.floor(timeLeft / 60);
+        const seconds = timeLeft % 60;
+        quizTimerDisplay.textContent = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+        if (timeLeft <= 0) {
+            clearInterval(timerInterval);
+            finishQuiz();
+        } else {
+            timeLeft--;
+        }
+    }
+    
+    if(quizTimerDisplay) {
+        timerInterval = setInterval(updateTimer, 1000);
+    }
     
     function loadQuizQuestion(index) {
         if (!quizQuestionText) return;
         const qData = quizQuestions[index];
         quizQuestionText.textContent = qData.q;
+        if(qCurrent) qCurrent.textContent = index + 1;
         quizOptionsContainer.innerHTML = '';
         
         qData.options.forEach((optText, i) => {
             const optDiv = document.createElement('div');
             optDiv.className = 'quiz-option';
             optDiv.textContent = optText;
-            optDiv.dataset.correct = (i === qData.correct).toString();
+            
+            if (userAnswers[index] === i) {
+                optDiv.classList.add('selected');
+            }
             
             optDiv.addEventListener('click', function() {
                 const siblings = quizOptionsContainer.querySelectorAll('.quiz-option');
                 siblings.forEach(s => s.classList.remove('selected'));
                 this.classList.add('selected');
+                userAnswers[index] = i;
             });
             
             quizOptionsContainer.appendChild(optDiv);
         });
+        
+        if(quizPrevBtn) quizPrevBtn.disabled = index === 0;
+        if(quizSubmitBtn) quizSubmitBtn.textContent = index === quizQuestions.length - 1 ? "Submit Test" : "Next Question";
     }
 
     if (quizQuestionText) {
         loadQuizQuestion(currentQuizIndex);
     }
+    
+    if (quizPrevBtn) {
+        quizPrevBtn.addEventListener('click', () => {
+            if (currentQuizIndex > 0) {
+                currentQuizIndex--;
+                loadQuizQuestion(currentQuizIndex);
+            }
+        });
+    }
 
-    if (quizForm && quizResult) {
+    if (quizForm && quizResultCard) {
         quizForm.addEventListener('submit', (e) => {
             e.preventDefault();
             
-            // If it's the "Next Question" state
-            if (quizSubmitBtn.textContent === "Next Question") {
-                currentQuizIndex++;
-                if (currentQuizIndex < quizQuestions.length) {
-                    loadQuizQuestion(currentQuizIndex);
-                    quizResult.classList.remove('show');
-                    quizSubmitBtn.textContent = "Submit Answer";
-                } else {
-                    quizQuestionText.textContent = "Quiz Completed!";
-                    quizOptionsContainer.innerHTML = "";
-                    quizSubmitBtn.style.display = 'none';
-                    quizResult.innerHTML = '<i class="bx bx-trophy text-success"></i> Great job on the Aptitude Test!';
-                    quizResult.className = 'quiz-result show text-success';
-                }
-                return;
-            }
-            
-            const selected = document.querySelector('.quiz-option.selected');
-            if (!selected) {
-                alert("Please select an answer!");
-                return;
-            }
-            
-            const isCorrect = selected.dataset.correct === 'true';
-            quizResult.classList.add('show');
-            
-            if (isCorrect) {
-                quizResult.innerHTML = '<i class="bx bx-check-circle text-success"></i> Correct! Well done.';
-                quizResult.className = 'quiz-result show text-success';
-            } else {
-                quizResult.innerHTML = '<i class="bx bx-x-circle text-danger"></i> Incorrect. The correct answer is highlighted.';
-                quizResult.className = 'quiz-result show text-danger';
-                // highlight correct answer
-                const allOpts = document.querySelectorAll('.quiz-option');
-                allOpts.forEach(o => {
-                    if (o.dataset.correct === 'true') {
-                        o.style.borderColor = '#10B981';
-                        o.style.background = 'rgba(16, 185, 129, 0.1)';
-                    }
-                });
-            }
-            
             if (currentQuizIndex < quizQuestions.length - 1) {
-                quizSubmitBtn.textContent = "Next Question";
+                currentQuizIndex++;
+                loadQuizQuestion(currentQuizIndex);
             } else {
-                quizSubmitBtn.style.display = 'none';
-                setTimeout(() => {
-                    quizQuestionText.textContent = "Quiz Completed!";
-                    quizOptionsContainer.innerHTML = "";
-                    quizResult.innerHTML = '<i class="bx bx-trophy text-success"></i> Great job on the Aptitude Test!';
-                    quizResult.className = 'quiz-result show text-success';
-                }, 2000);
+                finishQuiz();
             }
         });
+    }
+    
+    function finishQuiz() {
+        clearInterval(timerInterval);
+        score = userAnswers.reduce((total, answer, index) => {
+            return total + (answer === quizQuestions[index].correct ? 1 : 0);
+        }, 0);
+        
+        if(quizForm) quizForm.style.display = 'none';
+        if(quizResultCard) quizResultCard.style.display = 'block';
+        if(finalScoreDisplay) finalScoreDisplay.textContent = `${score}/${quizQuestions.length}`;
+        const timerEl = document.querySelector('.quiz-timer');
+        if(timerEl) timerEl.style.display = 'none';
     }
 
     // Query Submission & Recent List
@@ -374,4 +404,99 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     }
+
+    // Initialize Application Progress Chart
+    const appChartCanvas = document.getElementById('applicationProgressChart');
+    if (appChartCanvas && typeof Chart !== 'undefined') {
+        const ctx = appChartCanvas.getContext('2d');
+        
+        new Chart(ctx, {
+            type: 'doughnut',
+            data: {
+                labels: ['Applied', 'Under Review', 'Interview', 'Selected', 'Rejected'],
+                datasets: [{
+                    data: [15, 8, 4, 1, 3],
+                    backgroundColor: [
+                        '#94A3B8', // Applied - Gray
+                        '#6366F1', // Under Review - Indigo
+                        '#F59E0B', // Interview - Amber
+                        '#10B981', // Selected - Emerald
+                        '#EF4444'  // Rejected - Red
+                    ],
+                    borderWidth: 0,
+                    hoverOffset: 4
+                }]
+            },
+            options: {
+                responsive: true,
+                maintainAspectRatio: false,
+                cutout: '70%',
+                plugins: {
+                    legend: {
+                        position: 'right',
+                        labels: {
+                            color: '#94A3B8',
+                            padding: 20,
+                            usePointStyle: true,
+                            pointStyle: 'circle',
+                            font: {
+                                size: 12,
+                                family: "'Inter', sans-serif"
+                            }
+                        }
+                    },
+                    tooltip: {
+                        backgroundColor: 'rgba(30, 41, 59, 0.9)',
+                        titleColor: '#fff',
+                        bodyColor: '#fff',
+                        borderColor: 'rgba(255,255,255,0.1)',
+                        borderWidth: 1,
+                        padding: 12,
+                    }
+                }
+            }
+        });
+    }
+
+    // Sidebar active state update on scroll
+    const sections = document.querySelectorAll('.section-divider, #home');
+    const navLinks = document.querySelectorAll('.sidebar-menu a');
+    
+    if(sections.length > 0 && navLinks.length > 0) {
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 150) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+    }
+
+    // Intersection Observer for scroll animations
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: "0px 0px -50px 0px"
+    };
+
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('show');
+                observer.unobserve(entry.target); // Optional: only animate once
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.zoom-in, .fade-in-up, .fade-in-left, .fade-in-right').forEach(el => {
+        observer.observe(el);
+    });
 });

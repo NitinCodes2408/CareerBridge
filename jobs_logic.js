@@ -282,13 +282,20 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    if (applyJobForm) {
-        applyJobForm.addEventListener('submit', (e) => {
+    const confirmApplyBtn = document.getElementById('confirmApplyBtn');
+
+    if (confirmApplyBtn && applyJobForm) {
+        confirmApplyBtn.addEventListener('click', (e) => {
             e.preventDefault();
+            
+            if (!applyJobForm.checkValidity()) {
+                applyJobForm.reportValidity();
+                return;
+            }
             
             if (!currentlyViewingJob) return;
             
-            const btn = document.getElementById('confirmApplyBtn');
+            const btn = confirmApplyBtn;
             const originalText = btn.innerHTML;
             btn.innerHTML = '<i class="bx bx-loader-alt bx-spin"></i> Submitting...';
             btn.style.pointerEvents = 'none';

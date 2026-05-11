@@ -114,64 +114,403 @@
       </header>
       
       <div class="dashboard-body">
-<div class="section-divider" id="profile">
-          <h3 class="section-title">My Profile</h3>
-          <p class="section-subtitle">Manage your personal and academic details</p>
-        </div>
-        <div class="dash-card zoom-in profile-layout" style="margin-bottom: 3rem;">
-          <div class="profile-left">
-            <div class="profile-image-large">
-              <img id="profilePageAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff&size=120" alt="Profile">
-              <button class="btn btn-icon edit-avatar-btn"><i class='bx bx-camera'></i></button>
+        <!-- PROFILE HEADER -->
+        <div class="dash-card profile-header-card" style="margin-bottom: 2rem; padding: 0; position: relative; border-radius: var(--radius-lg); overflow: visible !important;">
+          <div class="profile-cover" style="height: 150px; border-top-left-radius: var(--radius-lg); border-top-right-radius: var(--radius-lg); background: linear-gradient(135deg, rgba(99, 102, 241, 0.4) 0%, rgba(30, 41, 59, 0.8) 100%);"></div>
+          <div class="profile-header-content" style="padding: 0 2rem 2rem 2rem; position: relative;">
+            <div class="profile-avatar-wrapper" style="margin-top: -60px; display: inline-block; position: relative; cursor: pointer;" id="avatarTrigger">
+              <img id="profilePageAvatar" src="https://ui-avatars.com/api/?name=Student+User&background=6366F1&color=fff&size=120" alt="Profile" style="width: 120px; height: 120px; border-radius: 50%; border: 4px solid var(--bg-main); box-shadow: 0 10px 25px rgba(0,0,0,0.5); background: var(--bg-main); object-fit: cover; transition: all 0.3s ease;">
+              <div class="avatar-edit-overlay" style="position: absolute; bottom: 5px; right: 5px; background: var(--primary); color: #fff; width: 32px; height: 32px; border-radius: 50%; display: flex; align-items: center; justify-content: center; border: 3px solid var(--bg-main); box-shadow: 0 4px 10px rgba(0,0,0,0.3); transition: all 0.3s ease;">
+                <i class='bx bxs-camera' style="font-size: 1.1rem;"></i>
+              </div>
+              <input type="file" id="avatarUploadInput" accept="image/*" style="display: none;">
             </div>
-            <h3 id="profileNameDisplay" style="margin-top: 1rem; color: #fff; font-size: 1.4rem; text-align: center;">Student User</h3>
-            <p style="color: var(--text-muted); margin-bottom: 1.5rem; text-align: center;">Software Engineering Student</p>
-            <div class="profile-badges">
-              <h4>Achievements</h4>
-              <div class="badges-grid">
-                <div class="badge-card tooltip" data-tooltip="Java Beginner"><img src="https://cdn-icons-png.flaticon.com/512/5968/5968282.png" width="32"></div>
-                <div class="badge-card tooltip" data-tooltip="Aptitude Master"><img src="https://cdn-icons-png.flaticon.com/512/2097/2097260.png" width="32"></div>
-                <div class="badge-card tooltip" data-tooltip="Resume Pro"><img src="https://cdn-icons-png.flaticon.com/512/2912/2912761.png" width="32"></div>
-              </div>
-            </div>
-          </div>
-          <div class="profile-right">
-            <form class="lead-form grid-form">
-              <div class="form-group">
-                <label>Full Name</label>
-                <input type="text" value="Student User" id="profName">
-              </div>
-              <div class="form-group">
-                <label>College/University</label>
-                <input type="text" value="National Institute of Technology">
-              </div>
-              <div class="form-group">
-                <label>Graduation Year</label>
-                <input type="text" value="2027">
-              </div>
-              <div class="form-group">
-                <label>LinkedIn URL</label>
-                <input type="url" placeholder="https://linkedin.com/in/username">
-              </div>
-              <div class="form-group full-width">
-                <label>Top Skills</label>
-                <input type="text" value="Java, React, Node.js, SQL, DSA">
-              </div>
-              <div class="form-group full-width">
-                <label>Resume Upload</label>
-                <div class="file-upload-box">
-                  <i class='bx bx-cloud-upload'></i>
-                  <p>Drag & drop or click to upload PDF</p>
+            <div class="profile-header-info" style="display: flex; justify-content: space-between; align-items: flex-start; margin-top: 1rem; flex-wrap: wrap; gap: 1rem;">
+              <div>
+                <h2 id="profileNameDisplay" style="font-size: 1.8rem; margin-bottom: 0.2rem; color: #fff;">Student User</h2>
+                <p id="profileHeadlineDisplay" style="color: var(--primary); font-weight: 500; font-size: 1.1rem; margin-bottom: 0.5rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-code-alt'></i> Aspiring Software Developer</p>
+                <div style="display: flex; gap: 1.5rem; color: var(--text-muted); font-size: 0.9rem; flex-wrap: wrap;">
+                  <span style="display: flex; align-items: center; gap: 0.3rem;"><i class='bx bxs-graduation'></i> National Institute of Technology</span>
+                  <span style="display: flex; align-items: center; gap: 0.3rem;"><i class='bx bx-calendar'></i> Class of 2027</span>
                 </div>
               </div>
-              <div class="form-group full-width" style="margin-top: 1rem;">
-                <button type="button" id="saveProfileBtn" class="btn btn-primary"><i class='bx bx-save'></i> Save Changes</button>
+              <div class="dropdown-container" style="display: inline-block;">
+                <button class="btn btn-outline" style="border-color: rgba(255,255,255,0.2);"><i class='bx bx-edit-alt'></i> Edit Profile</button>
+                <div class="dropdown-menu-custom glass-card" style="right: 0; left: auto; top: 100%; margin-top: 0.5rem; width: max-content; min-width: 180px; z-index: 100; display: flex; flex-direction: column;">
+                  <a href="#" class="edit-avatar-btn"><i class='bx bx-upload'></i> Upload Photo</a>
+                  <a href="#" class="remove-avatar-btn text-danger"><i class='bx bx-trash'></i> Remove Photo</a>
+                  <div class="dropdown-divider" style="margin: 0;"></div>
+                  <a href="#personal-info" class="scroll-link"><i class='bx bx-user-circle'></i> Edit Basic Info</a>
+                  <a href="#education-section" class="scroll-link"><i class='bx bxs-graduation'></i> Manage Education</a>
+                  <a href="#skills-section" class="scroll-link"><i class='bx bx-code-alt'></i> Update Skills</a>
+                  <a href="#projects-section" class="scroll-link"><i class='bx bx-briefcase-alt-2'></i> Showcase Projects</a>
+                </div>
               </div>
-            </form>
+            </div>
           </div>
         </div>
 
+        <div class="dashboard-grid split-grid-large" style="align-items: start;">
+          
+          <!-- LEFT COLUMN (Main Content) -->
+          <div class="profile-main-col" style="display: flex; flex-direction: column; gap: 2rem;">
+            
+            <!-- Personal Information -->
+            <div class="dash-card" id="personal-info">
+              <div class="card-header" style="margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-user' style="color: var(--primary);"></i> Personal Information</h3>
+              </div>
+              <form class="lead-form grid-form" style="background: transparent; padding: 0; box-shadow: none;">
+                <div class="form-group">
+                  <label>Full Name</label>
+                  <input type="text" value="Student User" id="profName" class="form-control">
+                </div>
+                <div class="form-group" style="display: flex; align-items: flex-end; gap: 1rem;">
+                  <div style="flex: 1;">
+                    <label>Professional Headline</label>
+                    <input type="text" value="Aspiring Software Developer" id="profHeadline" class="form-control" placeholder="e.g. Full Stack Developer | React Expert">
+                  </div>
+                  <button type="button" class="btn btn-outline edit-avatar-btn" style="height: 45px; white-space: nowrap; margin-bottom: 0;"><i class='bx bx-image-add'></i> Change Photo</button>
+                </div>
+                <div class="form-group">
+                  <label>Email Address</label>
+                  <input type="email" value="student@example.com" id="profEmail" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Phone Number</label>
+                  <input type="text" value="+91 9876543210" id="profPhone" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>Date of Birth</label>
+                  <input type="date" value="2003-05-15" id="profDOB" class="form-control" style="color-scheme: dark;">
+                </div>
+                <div class="form-group">
+                  <label>Gender</label>
+                  <select id="profGender" class="form-control" style="background-color: rgba(0,0,0,0.2); color: #fff;">
+                    <option>Male</option>
+                    <option>Female</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+                <div class="form-group full-width">
+                  <label>Address</label>
+                  <input type="text" value="123 Tech Park, Civil Lines" id="profAddress" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>City</label>
+                  <input type="text" value="Nagpur" id="profCity" class="form-control">
+                </div>
+                <div class="form-group">
+                  <label>State</label>
+                  <input type="text" value="Maharashtra" id="profState" class="form-control">
+                </div>
+                <div class="form-group full-width" style="display: flex; justify-content: flex-end; margin-top: 1rem;">
+                  <button type="button" id="saveProfileBtn" class="btn btn-primary"><i class='bx bx-save'></i> Save Changes</button>
+                </div>
+              </form>
+            </div>
+
+            <!-- Education Section -->
+            <div class="dash-card" id="education-section">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bxs-graduation' style="color: var(--primary);"></i> Education</h3>
+                <button class="btn btn-icon btn-sm" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-plus'></i></button>
+              </div>
+              <div class="timeline" style="border-left: 2px solid rgba(255,255,255,0.1); padding-left: 1.5rem; position: relative;">
+                
+                <div class="timeline-item" style="position: relative; margin-bottom: 2rem;">
+                  <div class="timeline-dot" style="position: absolute; left: -1.95rem; top: 0; width: 14px; height: 14px; border-radius: 50%; background: var(--primary); border: 3px solid var(--bg-main);"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                      <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff;">National Institute of Technology</h4>
+                      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.4rem;">B.Tech in Computer Science</p>
+                      <p style="color: var(--primary); font-size: 0.85rem; font-weight: 500; background: rgba(99,102,241,0.1); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px;">CGPA: 8.5 / 10</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                      <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">2023 - 2027</span>
+                      <button class="btn btn-icon btn-sm" style="background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1);"><i class='bx bx-edit'></i></button>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="timeline-item" style="position: relative;">
+                  <div class="timeline-dot" style="position: absolute; left: -1.95rem; top: 0; width: 14px; height: 14px; border-radius: 50%; background: rgba(255,255,255,0.2); border: 3px solid var(--bg-main);"></div>
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; flex-wrap: wrap; gap: 1rem;">
+                    <div>
+                      <h4 style="font-size: 1.1rem; margin-bottom: 0.2rem; color: #fff;">Delhi Public School</h4>
+                      <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 0.4rem;">Higher Secondary (12th)</p>
+                      <p style="color: rgba(255,255,255,0.6); font-size: 0.85rem; font-weight: 500; background: rgba(255,255,255,0.05); display: inline-block; padding: 0.2rem 0.5rem; border-radius: 4px;">Percentage: 92%</p>
+                    </div>
+                    <div style="display: flex; flex-direction: column; align-items: flex-end; gap: 0.5rem;">
+                      <span class="badge" style="background: rgba(255,255,255,0.05); color: var(--text-muted);">2021 - 2023</span>
+                      <button class="btn btn-icon btn-sm" style="background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1);"><i class='bx bx-edit'></i></button>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Skills Section -->
+            <div class="dash-card" id="skills-section">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-code-alt' style="color: var(--primary);"></i> Skills & Proficiencies</h3>
+                <button class="btn btn-icon btn-sm" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-plus'></i></button>
+              </div>
+              
+              <div style="margin-bottom: 2rem;">
+                <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Programming Languages</h4>
+                <div class="skills-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 1.5rem;">
+                  <div class="skill-item">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 500;">
+                      <span>Java</span>
+                      <span class="text-primary">85%</span>
+                    </div>
+                    <div class="progress-bar-mini" style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div class="progress-fill" style="width: 85%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 500;">
+                      <span>JavaScript</span>
+                      <span class="text-primary">90%</span>
+                    </div>
+                    <div class="progress-bar-mini" style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div class="progress-fill" style="width: 90%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                    </div>
+                  </div>
+                  <div class="skill-item">
+                    <div style="display: flex; justify-content: space-between; margin-bottom: 0.5rem; font-size: 0.95rem; font-weight: 500;">
+                      <span>Python</span>
+                      <span class="text-primary">70%</span>
+                    </div>
+                    <div class="progress-bar-mini" style="height: 8px; background: rgba(255,255,255,0.05); border-radius: 4px; overflow: hidden;">
+                      <div class="progress-fill" style="width: 70%; height: 100%; background: linear-gradient(90deg, var(--primary), var(--secondary)); border-radius: 4px;"></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div>
+                <h4 style="font-size: 0.85rem; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 1rem;">Frameworks & Tools</h4>
+                <div class="filter-chips" style="display: flex; flex-wrap: wrap; gap: 0.8rem;">
+                  <span class="chip active" style="padding: 0.5rem 1rem; font-size: 0.9rem;">React.js</span>
+                  <span class="chip active" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Node.js</span>
+                  <span class="chip active" style="padding: 0.5rem 1rem; font-size: 0.9rem;">MongoDB</span>
+                  <span class="chip active" style="padding: 0.5rem 1rem; font-size: 0.9rem;">Git & GitHub</span>
+                  <span class="chip" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">Docker</span>
+                  <span class="chip" style="padding: 0.5rem 1rem; font-size: 0.9rem; background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1);">AWS</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Projects Section -->
+            <div class="dash-card" id="projects-section">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-briefcase-alt-2' style="color: var(--primary);"></i> Projects Showcase</h3>
+                <button class="btn btn-icon btn-sm" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-plus'></i></button>
+              </div>
+              
+              <div class="projects-list" style="display: flex; flex-direction: column; gap: 1.5rem;">
+                
+                <div class="project-card glow-effect" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-md); padding: 1.5rem; transition: all 0.3s ease;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem;">
+                    <h4 style="font-size: 1.2rem; color: #fff;">E-Commerce Platform Dashboard</h4>
+                    <div style="display: flex; gap: 0.5rem;">
+                      <a href="#" class="btn btn-icon btn-sm" style="background: rgba(255,255,255,0.05); color: #fff; border: none;"><i class='bx bxl-github'></i></a>
+                      <a href="#" class="btn btn-icon btn-sm" style="background: rgba(255,255,255,0.05); color: var(--primary); border: none;"><i class='bx bx-link-external'></i></a>
+                    </div>
+                  </div>
+                  <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;">Developed a full-stack dashboard for e-commerce admins with real-time sales tracking, inventory management, and role-based access control. Implemented REST APIs and optimized database queries.</p>
+                  <div class="job-tags" style="margin: 0;">
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">React</span>
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">Node.js</span>
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">MongoDB</span>
+                  </div>
+                </div>
+
+                <div class="project-card glow-effect" style="background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: var(--radius-md); padding: 1.5rem; transition: all 0.3s ease;">
+                  <div style="display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 0.8rem;">
+                    <h4 style="font-size: 1.2rem; color: #fff;">AI Chatbot Interface</h4>
+                    <div style="display: flex; gap: 0.5rem;">
+                      <a href="#" class="btn btn-icon btn-sm" style="background: rgba(255,255,255,0.05); color: #fff; border: none;"><i class='bx bxl-github'></i></a>
+                    </div>
+                  </div>
+                  <p style="color: var(--text-muted); font-size: 0.95rem; margin-bottom: 1.2rem; line-height: 1.6;">A responsive chat interface integrating OpenAI's API to provide intelligent tutoring for computer science students.</p>
+                  <div class="job-tags" style="margin: 0;">
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">HTML/CSS</span>
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">JavaScript</span>
+                    <span style="background: rgba(99,102,241,0.1); color: var(--primary);">OpenAI API</span>
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!-- Certifications Section -->
+            <div class="dash-card">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1.5rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem;">
+                <h3 style="margin: 0; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-certification' style="color: var(--primary);"></i> Certifications</h3>
+                <button class="btn btn-icon btn-sm" style="background: rgba(99,102,241,0.1); color: var(--primary);"><i class='bx bx-upload'></i></button>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 1rem;">
+                <div style="display: flex; align-items: center; gap: 1.2rem; padding: 1rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s; cursor: pointer;" onmouseover="this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.background='rgba(255,255,255,0.02)'">
+                  <div style="width: 50px; height: 50px; background: #fff; border-radius: 8px; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
+                    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/2/2f/Google_2015_logo.svg/1200px-Google_2015_logo.svg.png" width="40" alt="Google">
+                  </div>
+                  <div style="flex: 1;">
+                    <h4 style="font-size: 1rem; color: #fff; margin-bottom: 0.2rem;">Google Cloud Certified - Associate Cloud Engineer</h4>
+                    <p style="color: var(--text-muted); font-size: 0.85rem;">Issued: Aug 2025</p>
+                  </div>
+                  <a href="#" style="color: var(--primary); font-size: 1.4rem;"><i class='bx bx-link-external'></i></a>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <!-- RIGHT COLUMN (Widgets) -->
+          <div class="profile-right-col" style="display: flex; flex-direction: column; gap: 2rem;">
+            
+            <!-- Completion Tracker -->
+            <div class="dash-card" style="background: linear-gradient(135deg, rgba(30, 41, 59, 0.8) 0%, rgba(99, 102, 241, 0.1) 100%);">
+              <h3 style="margin-bottom: 1.5rem; font-size: 1.2rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-target-lock' style="color: var(--primary);"></i> Profile Completion</h3>
+              <div style="display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.5rem;">
+                <div class="circular-progress" style="--progress: 75; width: 70px; height: 70px; border-radius: 50%; background: conic-gradient(var(--primary) calc(var(--progress) * 1%), rgba(255,255,255,0.1) 0); display: flex; align-items: center; justify-content: center;">
+                  <div class="inner-circle" style="width: 54px; height: 54px; font-size: 1rem; background: var(--bg-main); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; color: #fff;">75%</div>
+                </div>
+                <div>
+                  <p style="color: #fff; font-weight: 500; margin-bottom: 0.3rem;">Almost there!</p>
+                  <p style="color: var(--text-muted); font-size: 0.85rem;">Complete your profile to increase visibility to recruiters.</p>
+                </div>
+              </div>
+              <div class="task-list" style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <label class="task-item" style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled style="accent-color: var(--primary); width: 16px; height: 16px;">
+                  <span class="task-text" style="color: rgba(255,255,255,0.5); font-size: 0.9rem; text-decoration: line-through;">Add Personal Details</span>
+                </label>
+                <label class="task-item" style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled style="accent-color: var(--primary); width: 16px; height: 16px;">
+                  <span class="task-text" style="color: rgba(255,255,255,0.5); font-size: 0.9rem; text-decoration: line-through;">Add Education</span>
+                </label>
+                <label class="task-item" style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                  <input type="checkbox" checked disabled style="accent-color: var(--primary); width: 16px; height: 16px;">
+                  <span class="task-text" style="color: rgba(255,255,255,0.5); font-size: 0.9rem; text-decoration: line-through;">Add Skills & Projects</span>
+                </label>
+                <label class="task-item" style="display: flex; align-items: center; gap: 0.8rem; cursor: pointer;">
+                  <input type="checkbox" style="accent-color: var(--primary); width: 16px; height: 16px;">
+                  <span class="task-text" style="color: #fff; font-size: 0.9rem;">Upload Resume</span>
+                </label>
+              </div>
+            </div>
+
+            <!-- Resume Widget -->
+            <div class="dash-card">
+              <h3 style="margin-bottom: 1.2rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bxs-file-doc' style="color: var(--primary);"></i> Resume Manager</h3>
+              <div style="background: rgba(0,0,0,0.2); padding: 1.5rem; border-radius: var(--radius-md); border: 1px dashed rgba(255,255,255,0.2); text-align: center; margin-bottom: 1rem; transition: all 0.3s; cursor: pointer;" onmouseover="this.style.borderColor='var(--primary)'; this.style.background='rgba(99,102,241,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.2)'; this.style.background='rgba(0,0,0,0.2)'">
+                <i class='bx bxs-file-pdf' style="font-size: 3.5rem; color: #EF4444; margin-bottom: 0.5rem;"></i>
+                <h4 style="font-size: 1rem; margin-bottom: 0.2rem; color: #fff;">StudentUser_Resume.pdf</h4>
+                <p style="color: var(--text-muted); font-size: 0.85rem; margin-bottom: 1.5rem;">Updated 2 days ago</p>
+                <div style="display: flex; justify-content: center; gap: 0.5rem;">
+                  <button class="btn btn-primary btn-sm"><i class='bx bx-download'></i> Download</button>
+                  <button class="btn btn-outline btn-sm" style="border-color: rgba(255,255,255,0.2);"><i class='bx bx-upload'></i> Replace</button>
+                </div>
+              </div>
+              <div style="display: flex; justify-content: space-between; align-items: center; padding: 1rem; background: rgba(16, 185, 129, 0.1); border-radius: var(--radius-sm); border: 1px solid rgba(16, 185, 129, 0.2);">
+                <span style="font-size: 0.95rem; color: #10B981; font-weight: 500; display: flex; align-items: center; gap: 0.3rem;"><i class='bx bx-check-shield'></i> ATS Compatibility</span>
+                <strong style="color: #10B981; font-size: 1.1rem;">82/100</strong>
+              </div>
+            </div>
+
+            <!-- Social Links -->
+            <div class="dash-card">
+              <div class="card-header" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 1rem;">
+                <h3 style="margin: 0; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-link' style="color: var(--primary);"></i> Social Profiles</h3>
+                <button class="btn btn-icon btn-sm" style="background: transparent; color: var(--text-muted); border: 1px solid rgba(255,255,255,0.1);"><i class='bx bx-edit'></i></button>
+              </div>
+              <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <a href="#" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s;" onmouseover="this.style.borderColor='#0077b5'; this.style.background='rgba(0,119,181,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='rgba(255,255,255,0.02)'">
+                  <i class='bx bxl-linkedin-square' style="color: #0077b5; font-size: 1.8rem;"></i> 
+                  <span style="font-size: 0.95rem;">linkedin.com/in/studentuser</span>
+                </a>
+                <a href="#" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s;" onmouseover="this.style.borderColor='#fff'; this.style.background='rgba(255,255,255,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='rgba(255,255,255,0.02)'">
+                  <i class='bx bxl-github' style="font-size: 1.8rem;"></i> 
+                  <span style="font-size: 0.95rem;">github.com/studentuser</span>
+                </a>
+                <a href="#" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s;" onmouseover="this.style.borderColor='var(--primary)'; this.style.background='rgba(99,102,241,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='rgba(255,255,255,0.02)'">
+                  <i class='bx bx-globe' style="color: var(--primary); font-size: 1.8rem;"></i> 
+                  <span style="font-size: 0.95rem;">Portfolio Website</span>
+                </a>
+                <a href="#" style="display: flex; align-items: center; gap: 1rem; padding: 0.8rem; background: rgba(255,255,255,0.02); border-radius: var(--radius-sm); color: #fff; text-decoration: none; border: 1px solid rgba(255,255,255,0.05); transition: all 0.2s;" onmouseover="this.style.borderColor='#1DA1F2'; this.style.background='rgba(29,161,242,0.05)'" onmouseout="this.style.borderColor='rgba(255,255,255,0.05)'; this.style.background='rgba(255,255,255,0.02)'">
+                  <i class='bx bxl-twitter' style="color: #1DA1F2; font-size: 1.8rem;"></i> 
+                  <span style="font-size: 0.95rem;">Add X Profile</span>
+                </a>
+              </div>
+            </div>
+
+            <!-- Achievements -->
+            <div class="dash-card">
+              <h3 style="margin-bottom: 1.2rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bxs-trophy' style="color: #F59E0B;"></i> Achievements</h3>
+              <div class="badges-grid" style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem;">
+                <div class="badge-card tooltip" data-tooltip="50 Day Streak" style="width: 100%; height: 70px; border-color: #F59E0B; background: rgba(245, 158, 11, 0.05);">
+                  <i class='bx bxs-hot' style="color: #F59E0B; font-size: 2.2rem;"></i>
+                </div>
+                <div class="badge-card tooltip" data-tooltip="Top 5% in Aptitude" style="width: 100%; height: 70px; border-color: #10B981; background: rgba(16, 185, 129, 0.05);">
+                  <i class='bx bx-brain' style="color: #10B981; font-size: 2.2rem;"></i>
+                </div>
+                <div class="badge-card tooltip" data-tooltip="Hackathon Winner" style="width: 100%; height: 70px; border-color: var(--primary); background: rgba(99, 102, 241, 0.05);">
+                  <i class='bx bx-code-block' style="color: var(--primary); font-size: 2.2rem;"></i>
+                </div>
+                <div class="badge-card tooltip" data-tooltip="Resume Pro" style="width: 100%; height: 70px; border-color: var(--secondary); background: rgba(217, 70, 239, 0.05);">
+                  <i class='bx bxs-file-doc' style="color: var(--secondary); font-size: 2.2rem;"></i>
+                </div>
+                <div class="badge-card tooltip" data-tooltip="Java Expert" style="width: 100%; height: 70px; border-color: #3B82F6; background: rgba(59, 130, 246, 0.05);">
+                  <i class='bx bxl-java' style="color: #3B82F6; font-size: 2.2rem;"></i>
+                </div>
+                <div class="badge-card tooltip" data-tooltip="Add Achievement" style="width: 100%; height: 70px; border: 1px dashed rgba(255,255,255,0.2); background: transparent;">
+                  <i class='bx bx-plus' style="color: var(--text-muted); font-size: 2rem;"></i>
+                </div>
+              </div>
+            </div>
+
+            <!-- Profile Analytics -->
+            <div class="dash-card">
+              <h3 style="margin-bottom: 1.2rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-line-chart' style="color: var(--secondary);"></i> Activity Analytics</h3>
+              <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: var(--radius-sm); text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                  <h2 style="color: var(--primary); font-size: 2.2rem; margin-bottom: 0.2rem;">12</h2>
+                  <p style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; font-weight: 500;">Jobs Applied</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: var(--radius-sm); text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                  <h2 style="color: #10B981; font-size: 2.2rem; margin-bottom: 0.2rem;">3</h2>
+                  <p style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; font-weight: 500;">Interviews</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: var(--radius-sm); text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                  <h2 style="color: #F59E0B; font-size: 2.2rem; margin-bottom: 0.2rem;">85%</h2>
+                  <p style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; font-weight: 500;">Aptitude Avg</p>
+                </div>
+                <div style="background: rgba(255,255,255,0.02); padding: 1.2rem; border-radius: var(--radius-sm); text-align: center; border: 1px solid rgba(255,255,255,0.05); transition: all 0.3s;" onmouseover="this.style.transform='translateY(-3px)'" onmouseout="this.style.transform='translateY(0)'">
+                  <h2 style="color: var(--secondary); font-size: 2.2rem; margin-bottom: 0.2rem;">5</h2>
+                  <p style="color: var(--text-muted); font-size: 0.8rem; text-transform: uppercase; font-weight: 500;">Courses Done</p>
+                </div>
+              </div>
+            </div>
+
+            <!-- Settings -->
+            <div class="dash-card">
+              <h3 style="margin-bottom: 1rem; font-size: 1.1rem; display: flex; align-items: center; gap: 0.5rem;"><i class='bx bx-cog'></i> Account Settings</h3>
+              <div style="display: flex; flex-direction: column; gap: 0.8rem;">
+                <button class="btn btn-outline" style="text-align: left; padding: 1rem; border-color: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; color: #fff;"><span style="display: flex; align-items: center;"><i class='bx bx-lock-alt' style="margin-right: 0.8rem; font-size: 1.2rem;"></i> Change Password</span> <i class='bx bx-chevron-right'></i></button>
+                <button class="btn btn-outline" style="text-align: left; padding: 1rem; border-color: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; color: #fff;"><span style="display: flex; align-items: center;"><i class='bx bx-bell' style="margin-right: 0.8rem; font-size: 1.2rem;"></i> Notifications</span> <i class='bx bx-chevron-right'></i></button>
+                <button class="btn btn-outline" style="text-align: left; padding: 1rem; border-color: rgba(255,255,255,0.1); display: flex; align-items: center; justify-content: space-between; color: #fff;"><span style="display: flex; align-items: center;"><i class='bx bx-shield-quarter' style="margin-right: 0.8rem; font-size: 1.2rem;"></i> Privacy Settings</span> <i class='bx bx-chevron-right'></i></button>
+                <a href="index.html" class="btn btn-outline" style="text-align: left; padding: 1rem; border-color: rgba(239,68,68,0.2); color: #EF4444; text-decoration: none; display: flex; align-items: center;"><i class='bx bx-log-out' style="margin-right: 0.8rem; font-size: 1.2rem;"></i> Logout</a>
+              </div>
+            </div>
+
+          </div>
+
         </div>
+      </div>
     </main>
   </div>
 
@@ -192,5 +531,6 @@
   </div>
 
   <script src="dashboard.js"></script>
+  <script src="profile_logic.js"></script>
 </body>
 </html>

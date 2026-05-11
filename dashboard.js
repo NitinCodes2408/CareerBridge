@@ -72,35 +72,51 @@ document.addEventListener('DOMContentLoaded', () => {
     const profilePageAvatar = document.getElementById('profilePageAvatar');
     const profName = document.getElementById('profName');
     const welcomeAvatar = document.getElementById('welcomeAvatar');
+    const profileHeadlineDisplay = document.getElementById('profileHeadlineDisplay');
+    const profHeadline = document.getElementById('profHeadline');
     const profileNameDisplay = document.getElementById('profileNameDisplay');
 
     let storedName = localStorage.getItem('careerBridgeUser') || 'Student User';
+    let storedHeadline = localStorage.getItem('careerBridgeHeadline') || 'Aspiring Software Developer';
     
     // Clean up name by removing numbers (fixes existing sessions)
     storedName = storedName.replace(/[0-9]/g, '').trim() || 'Student User';
     
-    function updateAllNameDisplays(name) {
+    function updateAllNameDisplays(name, headline) {
         if (userNameDisplay) userNameDisplay.textContent = name;
         if (welcomeName) welcomeName.textContent = name.split(' ')[0];
         if (profName) profName.value = name;
         if (profileNameDisplay) profileNameDisplay.textContent = name;
         
-        const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6366F1&color=fff`;
+        if (headline) {
+            if (profileHeadlineDisplay) profileHeadlineDisplay.innerHTML = `<i class='bx bx-code-alt'></i> ${headline}`;
+            if (profHeadline) profHeadline.value = headline;
+            localStorage.setItem('careerBridgeHeadline', headline);
+        }
+        
+        const customAvatar = localStorage.getItem('careerBridgeAvatar');
+        const defaultAvatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6366F1&color=fff`;
+        const avatarUrl = customAvatar ? customAvatar : defaultAvatarUrl;
+        
         if (userAvatar) userAvatar.src = avatarUrl;
-        if (profilePageAvatar) profilePageAvatar.src = `${avatarUrl}&size=120`;
-        if (welcomeAvatar) welcomeAvatar.src = `${avatarUrl}&size=80`;
+        if (profilePageAvatar) profilePageAvatar.src = customAvatar ? customAvatar : `${defaultAvatarUrl}&size=120`;
+        if (welcomeAvatar) welcomeAvatar.src = customAvatar ? customAvatar : `${defaultAvatarUrl}&size=80`;
     }
 
     // Initial load
-    updateAllNameDisplays(storedName);
+    updateAllNameDisplays(storedName, storedHeadline);
 
     // Profile Save Logic
     const saveProfileBtn = document.getElementById('saveProfileBtn');
     if (saveProfileBtn && profName) {
         saveProfileBtn.addEventListener('click', () => {
             const newName = profName.value.trim() || 'Student User';
+            const newHeadline = profHeadline ? profHeadline.value.trim() : '';
+            
             localStorage.setItem('careerBridgeUser', newName);
-            updateAllNameDisplays(newName);
+            if (newHeadline) localStorage.setItem('careerBridgeHeadline', newHeadline);
+            
+            updateAllNameDisplays(newName, newHeadline);
             
             // Show feedback
             const originalText = saveProfileBtn.innerHTML;
@@ -116,7 +132,56 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Sidebar Toggle (Mobile)
+    // 4. Global Avatar Upload & Sync Logic
+    const initGlobalAvatarUpload = () => {
+        const topAvatar = document.getElementById('userAvatar');
+        if (!topAvatar) return;
+
+        topAvatar.style.cursor = 'pointer';
+        topAvatar.setAttribute('title', 'Click to change profile picture');
+
+        // Check for existing global input or create one
+        let globalInput = document.getElementById('globalAvatarUploadInput');
+        if (!globalInput) {
+            globalInput = document.createElement('input');
+            globalInput.type = 'file';
+            globalInput.id = 'globalAvatarUploadInput';
+            globalInput.accept = 'image/*';
+            globalInput.style.display = 'none';
+            document.body.appendChild(globalInput);
+        }
+
+        const triggerUpload = (e) => {
+            if (e.target.closest('.dropdown-menu-custom')) return; // Don't trigger if clicking menu links
+            globalInput.click();
+        };
+
+        topAvatar.addEventListener('click', triggerUpload);
+
+        globalInput.addEventListener('change', (e) => {
+            const file = e.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = (event) => {
+                    const dataUrl = event.target.result;
+                    localStorage.setItem('careerBridgeAvatar', dataUrl);
+                    
+                    // Update all images on the page
+                    const allAvatars = document.querySelectorAll('#userAvatar, #profilePageAvatar, #welcomeAvatar');
+                    allAvatars.forEach(img => {
+                        img.src = dataUrl;
+                    });
+                    
+                    console.log('Global avatar updated');
+                };
+                reader.readAsDataURL(file);
+            }
+        });
+    };
+
+    initGlobalAvatarUpload();
+
+    // 5. Sidebar Toggle (Mobile)
     const sidebarToggle = document.getElementById('sidebarToggle');
     const sidebar = document.getElementById('sidebar');
     const sidebarOverlay = document.getElementById('sidebarOverlay');

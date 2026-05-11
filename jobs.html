@@ -114,29 +114,62 @@
       </header>
       
       <div class="dashboard-body">
-<div class="section-divider" id="jobs">
-          <h3 class="section-title">Companies & Jobs</h3>
-          <p class="section-subtitle">Find your dream role</p>
+        
+        <!-- Recommended Jobs Section -->
+        <div class="section-divider" style="margin-top: 1rem;">
+          <h3 class="section-title">Recommended For You</h3>
+          <p class="section-subtitle">Based on your skills and profile</p>
+        </div>
+        <div class="dashboard-grid">
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Google" data-role="Software Engineer Intern" data-type="internship" data-location="remote">
+            <div class="job-header">
+              <div class="co-logo"><i class='bx bxl-google' style="font-size: 2rem; color: #4285F4;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-secondary-light text-secondary">Recommended</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
+            </div>
+            <h3>Software Engineer Intern</h3>
+            <p class="co-name">Google</p>
+            <div class="job-tags">
+              <span><i class='bx bx-map'></i> Remote</span>
+              <span><i class='bx bx-money'></i> ₹80k/mo</span>
+              <span><i class='bx bx-briefcase'></i> Internship</span>
+            </div>
+            <p class="job-eligibility">Eligibility: Pre-final year students (CS/IT). Strong DSA.</p>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
+          </div>
+        </div>
+
+        <div class="section-divider" id="jobs">
+          <h3 class="section-title">All Companies & Jobs</h3>
+          <p class="section-subtitle">Explore and find your dream role</p>
         </div>
         
         <div class="jobs-filters">
           <div class="search-box">
             <i class='bx bx-search'></i>
-            <input type="text" placeholder="Search roles or companies...">
+            <input type="text" id="jobSearchInput" placeholder="Search roles, skills or companies...">
           </div>
-          <div class="filter-chips">
-            <span class="chip active">All</span>
-            <span class="chip">Internship</span>
-            <span class="chip">Full-Time</span>
-            <span class="chip">Remote</span>
+          <div class="filter-chips" id="jobFilterChips">
+            <span class="chip active" data-filter="all">All</span>
+            <span class="chip" data-filter="internship">Internship</span>
+            <span class="chip" data-filter="full-time">Full-Time</span>
+            <span class="chip" data-filter="remote">Remote</span>
           </div>
         </div>
 
-        <div class="dashboard-grid">
-          <div class="dash-card job-card zoom-in">
+        <div class="dashboard-grid" id="jobsGrid">
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Amazon India" data-role="Software Dev Engineer I" data-type="full-time" data-location="bangalore">
             <div class="job-header">
               <div class="co-logo"><i class='bx bxl-amazon' style="font-size: 2rem; color: #FF9900;"></i></div>
-              <span class="badge bg-success-light text-success">Actively Hiring</span>
+              <div class="job-actions-top">
+                <span class="badge bg-success-light text-success">Actively Hiring</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
             </div>
             <h3>Software Dev Engineer I</h3>
             <p class="co-name">Amazon India</p>
@@ -146,13 +179,19 @@
               <span><i class='bx bx-briefcase'></i> Full-Time</span>
             </div>
             <p class="job-eligibility">Eligibility: B.Tech/BE (CS/IT) 2026/27 batch. 7.5+ CGPA.</p>
-            <a href="#" class="btn btn-primary w-100 apply-btn">Apply Now</a>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
           </div>
 
-          <div class="dash-card job-card zoom-in" style="transition-delay: 100ms;">
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Meta" data-role="Frontend React Intern" data-type="internship" data-location="remote" style="transition-delay: 100ms;">
             <div class="job-header">
               <div class="co-logo"><i class='bx bxl-meta' style="font-size: 2rem; color: #0668E1;"></i></div>
-              <span class="badge bg-warning-light text-warning">Closes in 2 days</span>
+              <div class="job-actions-top">
+                <span class="badge bg-warning-light text-warning">Closes in 2 days</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
             </div>
             <h3>Frontend React Intern</h3>
             <p class="co-name">Meta</p>
@@ -162,12 +201,19 @@
               <span><i class='bx bx-briefcase'></i> Internship</span>
             </div>
             <p class="job-eligibility">Eligibility: 3rd year students. Strong React JS skills.</p>
-            <a href="#" class="btn btn-primary w-100 apply-btn">Apply Now</a>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
           </div>
           
-          <div class="dash-card job-card zoom-in" style="transition-delay: 200ms;">
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Apple" data-role="Data Scientist" data-type="full-time" data-location="hyderabad" style="transition-delay: 200ms;">
             <div class="job-header">
               <div class="co-logo"><i class='bx bxl-apple' style="font-size: 2rem; color: #fff;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-primary-light text-primary">New Opening</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
             </div>
             <h3>Data Scientist</h3>
             <p class="co-name">Apple</p>
@@ -177,11 +223,110 @@
               <span><i class='bx bx-briefcase'></i> Full-Time</span>
             </div>
             <p class="job-eligibility">Eligibility: M.Tech/B.Tech with strong ML portfolio.</p>
-            <a href="#" class="btn btn-outline w-100 apply-btn">Apply Now</a>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
+          </div>
+          
+          <!-- Microsoft -->
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Microsoft" data-role="SDE II" data-type="full-time" data-location="remote" style="transition-delay: 300ms;">
+            <div class="job-header">
+              <div class="co-logo"><i class='bx bxl-microsoft' style="font-size: 2rem; color: #00A4EF;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-success-light text-success">Actively Hiring</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
+            </div>
+            <h3>Software Development Engineer II</h3>
+            <p class="co-name">Microsoft</p>
+            <div class="job-tags">
+              <span><i class='bx bx-map'></i> Remote</span>
+              <span><i class='bx bx-money'></i> 30-40 LPA</span>
+              <span><i class='bx bx-briefcase'></i> Full-Time</span>
+            </div>
+            <p class="job-eligibility">Eligibility: 2+ years experience in Cloud & Azure.</p>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
+          </div>
+
+          <!-- TCS -->
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="TCS" data-role="System Engineer" data-type="full-time" data-location="pune" style="transition-delay: 400ms;">
+            <div class="job-header">
+              <div class="co-logo"><i class='bx bxs-buildings' style="font-size: 2rem; color: #0087C1;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-primary-light text-primary">Mass Hiring</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
+            </div>
+            <h3>System Engineer</h3>
+            <p class="co-name">Tata Consultancy Services</p>
+            <div class="job-tags">
+              <span><i class='bx bx-map'></i> Pune</span>
+              <span><i class='bx bx-money'></i> 7-9 LPA</span>
+              <span><i class='bx bx-briefcase'></i> Full-Time</span>
+            </div>
+            <p class="job-eligibility">Eligibility: B.Tech (All Branches). 60% across academics.</p>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
+          </div>
+
+          <!-- Spotify -->
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Spotify" data-role="UI/UX Designer" data-type="internship" data-location="mumbai" style="transition-delay: 500ms;">
+            <div class="job-header">
+              <div class="co-logo"><i class='bx bxl-spotify' style="font-size: 2rem; color: #1DB954;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-warning-light text-warning">Closes soon</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
+            </div>
+            <h3>UI/UX Design Intern</h3>
+            <p class="co-name">Spotify India</p>
+            <div class="job-tags">
+              <span><i class='bx bx-map'></i> Mumbai</span>
+              <span><i class='bx bx-money'></i> ₹45k/mo</span>
+              <span><i class='bx bx-briefcase'></i> Internship</span>
+            </div>
+            <p class="job-eligibility">Eligibility: Design portfolio required. Figma expert.</p>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
+          </div>
+          
+          <!-- Adobe -->
+          <div class="dash-card job-card zoom-in job-card-hover" data-company="Adobe" data-role="Backend Developer" data-type="full-time" data-location="noida" style="transition-delay: 600ms;">
+            <div class="job-header">
+              <div class="co-logo"><i class='bx bxl-adobe' style="font-size: 2rem; color: #FF0000;"></i></div>
+              <div class="job-actions-top">
+                <span class="badge bg-secondary-light text-secondary">Hot Job</span>
+                <button class="icon-btn save-job-btn"><i class='bx bx-bookmark'></i></button>
+              </div>
+            </div>
+            <h3>Backend Developer</h3>
+            <p class="co-name">Adobe</p>
+            <div class="job-tags">
+              <span><i class='bx bx-map'></i> Noida</span>
+              <span><i class='bx bx-money'></i> 24-28 LPA</span>
+              <span><i class='bx bx-briefcase'></i> Full-Time</span>
+            </div>
+            <p class="job-eligibility">Eligibility: 1+ year in Node.js/Java and System Design.</p>
+            <div class="job-card-actions">
+              <a href="#" class="btn btn-outline view-details-btn">View Details</a>
+              <a href="#" class="btn btn-primary apply-btn">Apply Now</a>
+            </div>
           </div>
         </div>
-
+        
+        <div class="load-more-container text-center mt-4">
+            <button id="loadMoreBtn" class="btn btn-outline"><i class='bx bx-loader-alt'></i> Load More</button>
         </div>
+
+      </div>
     </main>
   </div>
 
@@ -201,6 +346,87 @@
     </div>
   </div>
 
+  <!-- Job Details Modal -->
+  <div class="content-modal" id="jobDetailsModal">
+    <div class="modal-content modal-content-large">
+      <div class="modal-header">
+        <h3 id="jdTitle">Job Role Details</h3>
+        <button id="closeJdModalBtn" class="close-btn"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="jd-header">
+            <h2 id="jdRole">Software Engineer</h2>
+            <p id="jdCompany" class="text-primary" style="font-size: 1.1rem; margin-bottom: 1rem;">Company Name</p>
+            <div class="job-tags" id="jdTags" style="margin-bottom: 2rem;"></div>
+        </div>
+        <div class="jd-body">
+            <h4 style="margin-bottom: 0.5rem; color: #fff;">Description</h4>
+            <p style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem;">Join our dynamic team to build scalable applications. You will be responsible for designing and implementing high-quality software solutions.</p>
+            
+            <h4 style="margin-bottom: 0.5rem; color: #fff;">Key Responsibilities</h4>
+            <ul style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                <li>Write clean, scalable, and maintainable code.</li>
+                <li>Collaborate with cross-functional teams to define and ship new features.</li>
+                <li>Identify and correct bottlenecks and fix bugs.</li>
+            </ul>
+
+            <h4 style="margin-bottom: 0.5rem; color: #fff;">Requirements & Skills</h4>
+            <ul style="color: var(--text-muted); line-height: 1.6; margin-bottom: 1.5rem; padding-left: 1.2rem;">
+                <li>Strong problem-solving skills and DSA knowledge.</li>
+                <li>Experience with modern web frameworks or backend technologies.</li>
+                <li>Good understanding of version control (Git).</li>
+            </ul>
+        </div>
+        <div class="modal-footer" style="margin-top: 2rem; text-align: right; border-top: 1px solid var(--border-color); padding-top: 1.5rem;">
+            <button class="btn btn-primary" id="jdApplyBtn">Apply for this Job</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Apply Job Modal -->
+  <div class="content-modal" id="applyJobModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="applyTitle">Apply for Role</h3>
+        <button id="closeApplyModalBtn" class="close-btn"><i class='bx bx-x'></i></button>
+      </div>
+      <div class="modal-body">
+        <div class="apply-header" style="text-align: center; margin-bottom: 2rem;">
+            <h4 id="applyRole" style="font-size: 1.3rem;">Software Engineer</h4>
+            <p id="applyCompany" style="color: var(--text-muted);">Company Name</p>
+        </div>
+        
+        <form id="applyJobForm" class="grid-form">
+            <div class="form-group full-width">
+                <label>Full Name</label>
+                <input type="text" class="form-control" id="applyName" required placeholder="Enter your full name">
+            </div>
+            <div class="form-group full-width">
+                <label>Email Address</label>
+                <input type="email" class="form-control" id="applyEmail" required placeholder="Enter your email">
+            </div>
+            <div class="form-group full-width">
+                <label>Resume</label>
+                <div class="file-upload-box" id="resumeUploadBox">
+                    <i class='bx bxs-file-pdf'></i>
+                    <p>Click to upload or drag & drop your Resume (PDF)</p>
+                    <input type="file" id="applyResume" style="display: none;" accept=".pdf" required>
+                    <span id="resumeFileName" style="display:block; margin-top: 0.5rem; color: var(--primary); font-size: 0.9rem;"></span>
+                </div>
+            </div>
+            <div class="form-group full-width" style="margin-top: 1rem;">
+                <button type="submit" class="btn btn-primary w-100" id="confirmApplyBtn">Confirm Application</button>
+            </div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toastContainer" class="toast-container"></div>
+
   <script src="dashboard.js"></script>
+  <script src="jobs_logic.js"></script>
 </body>
 </html>

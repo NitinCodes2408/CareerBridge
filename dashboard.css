@@ -891,3 +891,266 @@
   margin-top: 0.3rem;
   display: block;
 }
+
+
+
+/* =========================================
+   Jobs Portal Enhancements
+   ========================================= */
+
+/* Job Card Actions layout */
+.job-actions-top {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.icon-btn {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.1);
+  color: var(--text-muted);
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 1.2rem;
+}
+
+.icon-btn:hover {
+  color: var(--primary);
+  border-color: var(--primary);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.icon-btn.saved {
+  color: #10B981;
+  background: rgba(16, 185, 129, 0.1);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.job-card-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: auto;
+}
+
+.job-card-actions .btn {
+  flex: 1;
+  text-align: center;
+}
+
+/* Modals enhancements */
+.modal-content-large {
+  max-width: 900px;
+}
+
+/* Toast Notifications */
+.toast-container {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  z-index: 9999;
+}
+
+.toast {
+  background: rgba(30, 41, 59, 0.95);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-left: 4px solid var(--primary);
+  padding: 1rem 1.5rem;
+  border-radius: var(--radius-md);
+  box-shadow: 0 10px 25px rgba(0,0,0,0.5);
+  color: #fff;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  transform: translateX(120%);
+  opacity: 0;
+  animation: slideInRight 0.3s forwards ease-out;
+}
+
+.toast.success {
+  border-left-color: #10B981;
+}
+
+.toast.info {
+  border-left-color: #3B82F6;
+}
+
+.toast i {
+  font-size: 1.4rem;
+}
+
+.toast.fade-out {
+  animation: fadeOutRight 0.3s forwards ease-in;
+}
+
+@keyframes slideInRight {
+  from { transform: translateX(120%); opacity: 0; }
+  to { transform: translateX(0); opacity: 1; }
+}
+
+@keyframes fadeOutRight {
+  from { transform: translateX(0); opacity: 1; }
+  to { transform: translateX(120%); opacity: 0; }
+}
+
+/* =========================================
+   Mobile Responsiveness enhancements
+   ========================================= */
+
+@media (max-width: 1024px) {
+  .dashboard-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr) !important;
+  }
+  .welcome-card {
+    flex-direction: column;
+    text-align: center;
+    gap: 1.5rem;
+  }
+  .welcome-status {
+    width: 100%;
+    text-align: center !important;
+  }
+  .welcome-status div {
+    justify-content: center !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .dashboard-layout {
+    flex-direction: column;
+  }
+  .sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100vh;
+    z-index: 10000;
+    transform: translateX(-100%);
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 5px 0 25px rgba(0,0,0,0.5);
+  }
+  .sidebar.active {
+    transform: translateX(0);
+  }
+  
+  /* Sidebar Overlay */
+  .sidebar-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.6);
+    backdrop-filter: blur(4px);
+    z-index: 9999;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+  }
+  .sidebar-overlay.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .main-content {
+    margin-left: 0 !important;
+    width: 100%;
+  }
+
+  .menu-toggle {
+    display: block !important;
+    font-size: 2rem;
+    color: #fff;
+    cursor: pointer;
+    margin-right: 1rem;
+  }
+  
+  .header-actions {
+    gap: 0.8rem;
+  }
+  .header-search {
+    display: none !important; /* Hide complex search on mobile */
+  }
+  
+  .dashboard-grid {
+    grid-template-columns: 1fr !important;
+  }
+  .stats-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Welcome Hero Adjustments */
+  .welcome-card h2 {
+    font-size: 1.5rem !important;
+  }
+  .welcome-card p {
+    font-size: 0.95rem !important;
+  }
+  
+  /* Learning Domain Categories */
+  .learning-categories {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .cat-pill {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+  .domain-section > div:first-child {
+    flex-direction: column;
+    gap: 1rem;
+    align-items: flex-start !important;
+  }
+
+  /* Profile page fixes */
+  .profile-layout {
+    flex-direction: column !important;
+  }
+  
+  /* Jobs / Job Cards */
+  .job-card-horizontal {
+    min-width: 280px;
+  }
+  
+  /* Buttons and Actions */
+  .btn {
+    padding: 0.6rem 1.2rem;
+    font-size: 0.9rem;
+  }
+  
+  /* Table */
+  .modern-table th, .modern-table td {
+    padding: 0.8rem;
+    font-size: 0.85rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .dashboard-header {
+    padding: 1rem;
+  }
+  .dashboard-body {
+    padding: 1rem;
+  }
+  .dash-card {
+    padding: 1.2rem;
+  }
+  .resume-preview-doc {
+    padding: 1.2rem;
+  }
+}

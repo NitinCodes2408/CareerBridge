@@ -72,20 +72,49 @@ document.addEventListener('DOMContentLoaded', () => {
     const profilePageAvatar = document.getElementById('profilePageAvatar');
     const profName = document.getElementById('profName');
     const welcomeAvatar = document.getElementById('welcomeAvatar');
+    const profileNameDisplay = document.getElementById('profileNameDisplay');
 
     let storedName = localStorage.getItem('careerBridgeUser') || 'Student User';
     
     // Clean up name by removing numbers (fixes existing sessions)
     storedName = storedName.replace(/[0-9]/g, '').trim() || 'Student User';
     
-    if (userNameDisplay) userNameDisplay.textContent = storedName;
-    if (welcomeName) welcomeName.textContent = storedName.split(' ')[0];
-    if (profName) profName.value = storedName;
-    
-    const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(storedName)}&background=6366F1&color=fff`;
-    if (userAvatar) userAvatar.src = avatarUrl;
-    if (profilePageAvatar) profilePageAvatar.src = `${avatarUrl}&size=120`;
-    if (welcomeAvatar) welcomeAvatar.src = `${avatarUrl}&size=80`;
+    function updateAllNameDisplays(name) {
+        if (userNameDisplay) userNameDisplay.textContent = name;
+        if (welcomeName) welcomeName.textContent = name.split(' ')[0];
+        if (profName) profName.value = name;
+        if (profileNameDisplay) profileNameDisplay.textContent = name;
+        
+        const avatarUrl = `https://ui-avatars.com/api/?name=${encodeURIComponent(name)}&background=6366F1&color=fff`;
+        if (userAvatar) userAvatar.src = avatarUrl;
+        if (profilePageAvatar) profilePageAvatar.src = `${avatarUrl}&size=120`;
+        if (welcomeAvatar) welcomeAvatar.src = `${avatarUrl}&size=80`;
+    }
+
+    // Initial load
+    updateAllNameDisplays(storedName);
+
+    // Profile Save Logic
+    const saveProfileBtn = document.getElementById('saveProfileBtn');
+    if (saveProfileBtn && profName) {
+        saveProfileBtn.addEventListener('click', () => {
+            const newName = profName.value.trim() || 'Student User';
+            localStorage.setItem('careerBridgeUser', newName);
+            updateAllNameDisplays(newName);
+            
+            // Show feedback
+            const originalText = saveProfileBtn.innerHTML;
+            saveProfileBtn.innerHTML = '<i class="bx bx-check"></i> Saved!';
+            saveProfileBtn.style.backgroundColor = '#10B981';
+            saveProfileBtn.style.borderColor = '#10B981';
+            
+            setTimeout(() => {
+                saveProfileBtn.innerHTML = originalText;
+                saveProfileBtn.style.backgroundColor = '';
+                saveProfileBtn.style.borderColor = '';
+            }, 2000);
+        });
+    }
 
     // Sidebar Toggle (Mobile)
     const sidebarToggle = document.getElementById('sidebarToggle');

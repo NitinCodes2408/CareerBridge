@@ -1,0 +1,51 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *, html, body {
+    font-family: "Times New Roman", Times, Georgia, serif !important;
+    color-scheme: light;
+  }
+  
+  body {
+    background-color: #faf9f6;
+    color: #1c1917;
+  }
+  
+  h1, h2, h3, h4, h5, h6, p, span, a, button, input, textarea {
+    font-family: "Times New Roman", Times, Georgia, serif !important;
+  }
+}
+
+/* Custom scrollbar matching reference site */
+.scrollbar-thin-visible::-webkit-scrollbar {
+  width: 4px;
+}
+
+.scrollbar-thin-visible::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.scrollbar-thin-visible::-webkit-scrollbar-thumb {
+  background: #e7e5e4;
+  border-radius: 9999px;
+}
+
+.scrollbar-thin-visible::-webkit-scrollbar-thumb:hover {
+  background: #d6d3d1;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Subtle transitions */
+::selection {
+  background-color: #fed7aa;
+  color: #7c2d12;
+}
